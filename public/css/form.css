@@ -1,0 +1,34 @@
+*{
+	font-family: arial;
+    text-indent: 40px;
+    
+}
+
+header {
+	
+}
+
+aside {
+	 
+}
+
+section {
+	
+}
+
+
+.login{
+	background: cornsilk;
+}
+
+.email{
+	background: papayawhip;
+}
+
+.test {
+	background: mistyrose; 
+}
+
+.moon {
+	background: lavenderblush; 
+}

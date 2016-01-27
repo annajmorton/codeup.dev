@@ -1,0 +1,48 @@
+*{
+	font-family: arial;
+	background-color: #fff2e5
+    
+}
+
+link{
+
+}
+
+h1{
+	color:#261a0d;
+}
+
+
+
+section.poem{
+	background-image: url(/img/compost.jpg);
+	color:#fff2e5;
+	img{ 
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+section.poem{
+
+}
+
+.poem em {
+	background-color:transparent;
+	color: #ffd733;
+}
+
+.poem strong {
+	background-color:transparent;
+	text-decoration: underline;
+	color: #ffd733;
+}
+
+h2{
+	text-decoration: underline;
+	color:#261a0d;
+}
+
+
+
+

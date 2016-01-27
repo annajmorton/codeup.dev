@@ -1,0 +1,24 @@
+
+body{
+
+	font-family: 'Sue Ellen Francisco', cursive;
+	color: floralwhite;
+
+	background-image: url(/img/hand_feather.jpg); 
+	background-size: cover;
+	background-repeat: no-repeat;
+	
+}
+
+
+
+
+
+.btn.btn-lg.btn-default{
+
+	color: #331a00;
+	background-color: 
+	background-color: #fff3e5;
+	border-color: #331a00;
+
+}

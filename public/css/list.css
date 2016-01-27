@@ -1,0 +1,28 @@
+*{
+	font-family: arial;
+	
+}
+
+h1{
+	background-color: cornsilk;
+	
+}
+
+.bkcolor{
+	background-color: papayawhip;
+	text-decoration: underline;
+}
+
+.offset{
+
+	background-color: #00b33c;
+}
+
+.wow{
+
+	text-decoration: underline;
+
+	background-color: #00b33c;
+	float: right;
+	clear: right;
+}
