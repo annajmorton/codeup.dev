@@ -4,25 +4,41 @@
 }
 
 h1{
-	background-color: cornsilk;
-	
+	background-color: pink;
+	margin-top: 16px;
+	padding-top: 5px;
+
+	float: left;
+	clear: left;
 }
 
-.bkcolor{
-	background-color: papayawhip;
-	text-decoration: underline;
+/*.bkcolor{*/
+	/*background-color: papayawhip;*/
+	/*text-decoration: underline;*/
+	/*margin-left: -20px;*/
+	/*padding-left: 20px;*/
+/*}*/
+
+.mylist{
+
+	float: left;
+	/*clear: both;*/
+	
+	
 }
 
 .offset{
 
 	background-color: #00b33c;
-}
-
-.wow{
-
-	text-decoration: underline;
-
-	background-color: #00b33c;
-	float: right;
+	margin-left:  -40px;
+	padding-left: 40px;
 	clear: right;
+	
 }
+
+.textt{
+
+	clear: left;
+}
+
+
