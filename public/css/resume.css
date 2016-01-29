@@ -12,8 +12,9 @@ body{
 
 .modal-header{
 
-	/*float: left;*/
-	background-color: yellow;
+	float: left;
+	color: #331900;
+	text-decoration: bold;
 
 }
 
@@ -21,24 +22,31 @@ body{
 .modal-body{
 
 	clear: left;
+	color: #331900;
 }
 
 
 .modal.fade{
 
-	background-color: papayawhip;
+	/*background-color: papayawhip;*/
 }
 
 .modal-content{
 
 	background-image: url(/img/graph_paper_by_rawen713.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+
 }
 
-.modal-header span {
 
-	float: right;
-	background-color: green;
+.modal-content button{
+
+	background-color: transparent;
+	border-color: #331900;
+
 }
+
 
 .btn.btn-lg.btn-default{
 
