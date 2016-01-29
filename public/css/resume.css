@@ -10,11 +10,35 @@ body{
 	
 }
 
+.modal-header{
+
+	/*float: left;*/
+	background-color: yellow;
+
+}
 
 
+.modal-body{
+
+	clear: left;
+}
 
 
+.modal.fade{
 
+	background-color: papayawhip;
+}
+
+.modal-content{
+
+	background-image: url(/img/graph_paper_by_rawen713.jpg);
+}
+
+.modal-header span {
+
+	float: right;
+	background-color: green;
+}
 
 .btn.btn-lg.btn-default{
 
