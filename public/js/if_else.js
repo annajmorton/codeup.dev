@@ -49,7 +49,7 @@ var favorite = 'orange'; // TODO: change this to your favorite color from the li
 
 // checks to see if the rando color is my favorite color (defined in line 8 above)
 
-	console.log( color = (color == favorite) ? "wow thats my favorite color": "well we cant all have good taste");
+	console.log( (color == favorite) ? "wow thats my favorite color": "well we cant all have good taste");
 
 
 
