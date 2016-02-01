@@ -13,18 +13,34 @@ body{
 
 
 .masthead-brand{
-	font-size: 800%; 
-	font-family: 'Caesar Dressing', cursive;
+	font-size: 400%; 
+	/*font-family: 'Caesar Dressing', cursive;*/
+	float: left;
+	display: block;
+	padding-top: 20px;
+
 
 }
 
 .masthead-nav{
-	font-size: 800%;
+	/*font-size: 200%;
 	font-family: 'Caesar Dressing', cursive;
-
+	color: floralwhite;*/
+	/*float: left;*/	
+	clear: left;
 }
 
 
+.masthead-nav li {
+	display: block;
+	
+	
+}
+
+
+
+
+/*this is all the modal junk - leave it alone*/
 
 .modal-header{
 
