@@ -12,6 +12,9 @@
 
 	<h1> while loop practice </h1>
 
+
+
+ <!-- times loop -->
 	<script type="text/javascript">
 
 	"use strict";
@@ -27,6 +30,40 @@
 		i +=1;
 	}
 
+	</script>
+
+
+
+
+<!-- prime only loop -->
+	<script type="text/javascript">
+
+	"use strict";
+
+	var ni = 2; //counter for second while loop
+	i = 2;
+
+
+	while (i < 100) {
+
+
+		while ( i % ni != 0) {
+
+			ni += 1;
+
+		}
+
+		if (ni == i) {
+
+			console.log(i);
+
+		}
+
+		ni = 2;
+
+		i += 1;
+
+	}
 
 
 	</script>
