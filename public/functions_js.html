@@ -17,64 +17,156 @@
 
 	Howdy cowboy
 
+
+
+
+<!-- excercise 1 -->
 	<script type="text/javascript">
-	// todo:
-	// Create a function called 'sayHello' that takes a parameter 'name'.
-	// When called, the function should log a message that says hello from the passed in name.
+		// todo:
+		// Create a function called 'sayHello' that takes a parameter 'name'.
+		// When called, the function should log a message that says hello from the passed in name.
 
-	// todo: Call the function 'sayHello' passing the variable 'myNameIs' as a parameter.
-	// todo:
-	// Create a function called 'isOdd' that takes a number as a parameter.
-	// The function should use the ternary operator to log a message.
-	// The log should tell the number passed in and whether it is odd or not.
-	// todo: Call the function 'isOdd' passing the variable 'random' as a parameter.
-
-
-	"use strict";
-
-	var myNameIs = 'Anna'; // todo: Fill in your name here.
+		// todo: Call the function 'sayHello' passing the variable 'myNameIs' as a parameter.
+		// todo:
+		// Create a function called 'isOdd' that takes a number as a parameter.
+		// The function should use the ternary operator to log a message.
+		// The log should tell the number passed in and whether it is odd or not.
+		// todo: Call the function 'isOdd' passing the variable 'random' as a parameter.
 
 
-	function sayHello(myNameIs){
+		"use strict";
 
-		var ouput = "Hi\! " + "my name is " + myNameIs + "\! Hello\!" 
-		return ouput;
-	}
-
-	console.log( sayHello(myNameIs));
+		var myNameIs = 'Anna'; // todo: Fill in your name here.
 
 
-	// do not worry about the details of this line
-	// just know that it generates a random number between 1 and 100
-	var random = Math.floor((Math.random()*100)+1);
+		function sayHello(myNameIs){
 
-	function isOdd(numin) {
-
-		var output;
-
-		if (numin % 2 != 0) {
-
-			output = "oh\! That's an odd number \! I love the number " + numin;
-
-		} else {
-
-			output = "umph\! not an odd number ... who picks " + numin + " ?";
+			var ouput = "Hi\! " + "my name is " + myNameIs + "\! Hello\!" 
+			return ouput;
 		}
 
-		
-		return output;
-	}
+		console.log( sayHello(myNameIs));
 
 
-	console.log( isOdd(random));
+		// do not worry about the details of this line
+		// just know that it generates a random number between 1 and 100
+		var random = Math.floor((Math.random()*100)+1);
+
+		function isOdd(numin) {
+
+			var output;
+
+			if (numin % 2 != 0) {
+
+				output = "oh\! That's an odd number \! I love the number " + numin;
+
+			} else {
+
+				output = "umph\! not an odd number ... who picks " + numin + " ?";
+			}
+
+			
+			return output;
+		}
 
 
-
-
-
-
+		console.log( isOdd(random));
 
 	</script>
+
+
+
+<!-- excercise 2 -->
+
+<script type="text/javascript">
+	"use strict";
+
+	// this function adds up two arguments passed to it
+	function additup(a, b) {
+
+		additup = a + b;
+		return additup;
+
+	}
+
+	console.log(additup(1,2));
+
+</script>
+
+
+
+<!-- excercise 3 -->
+
+<script type="text/javascript">
+	"use strict";
+
+	// this function subtracts two arguments passed to it
+	function subitdn(a, b) {
+
+		subitdn = a - b;
+		return subitdn;
+
+	}
+
+	console.log(subitdn(1,2));
+
+</script>
+
+
+<!-- excercise 4 -->
+
+<script type="text/javascript">
+	"use strict";
+
+	// this function multiplies two arguments together
+	function multIt(a, b) {
+
+		multIt = a * b;
+		return multIt;
+
+	}
+
+	console.log(multIt(1,2));
+
+</script>
+
+
+
+
+<!-- excercise 5 -->
+
+<script type="text/javascript">
+	"use strict";
+
+	// this function divides the first argument passed by the second argument
+	function divIt(a, b) {
+
+		divIt = a / b;
+		return divIt;
+
+	}
+
+	console.log(divIt(1,2));
+
+</script>
+
+
+<!-- excercise 6 -->
+
+<script type="text/javascript">
+	"use strict";
+
+	// this function taks the modulus of the first number by the second 
+	function modIt(a, b) {
+
+		modIt = a % b;
+		return modIt;
+
+	}
+
+	console.log(modIt(1,2));
+
+</script>
 
 
 </body>
