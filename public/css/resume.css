@@ -3,14 +3,28 @@ body{
 
 	font-family: 'Sue Ellen Francisco', cursive;
 	color: floralwhite;
-	font-size: xx-large;
-
 
 	background-image: url(/img/hand_feather.jpg); 
 	background-size: cover;
 	background-repeat: no-repeat;
 	
 }
+
+
+
+.masthead-brand{
+	font-size: 800%; 
+	font-family: 'Caesar Dressing', cursive;
+
+}
+
+.masthead-nav{
+	font-size: 800%;
+	font-family: 'Caesar Dressing', cursive;
+
+}
+
+
 
 .modal-header{
 
