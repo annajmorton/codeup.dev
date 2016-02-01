@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title> continue and break practice </title>
+
+	<meta charset = "utf8">
+
+
+</head>
+
+
+
+<body>
+
+
+	<h1>continue and for </h1>
+
+	<script type="text/javascript">
+
+		var badnum = 0;
+
+
+		do {
+		
+			// random number generator 
+			badnum = Math.floor((Math.random()*50)+1);
+
+		} while (badnum % 2 == 0);
+
+		
+		console.log( "Randum bad number is " + badnum);
+
+
+		for (var i = 0; i <= 50; i++) {
+			
+
+
+			if (i == badnum) {
+
+				console.log("yuck! " + badnum + " is no good");
+
+				continue;
+			};
+
+			if( i & 2 != 0) {
+
+				console.log( "Here is an odd number: " + i);
+			}
+
+		};
+
+
+	</script>
+
+
+</body>
+</html>
