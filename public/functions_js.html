@@ -74,99 +74,121 @@
 
 	</script>
 
-
-
-<!-- excercise 2 -->
-
 <script type="text/javascript">
 	"use strict";
+
+	var a = 0;
+	var b = 2;
+
+
+	// this functions checks for a number as an input
+	
+	function isNumber(num1) {
+
+		if (typeof(num1) == "number") {
+		
+			return num1;
+
+		} else {
+
+			console.log( num1 + " is not a number, please enter a number");
+			return NaN;
+		}
+	}
+
+	
+	a = isNumber(a);
+	b = isNumber(b);
+
+
+// <!-- excercise 2 -->
+
+
 
 	// this function adds up two arguments passed to it
 	function additup(a, b) {
 
-		additup = a + b;
-		return additup;
+			additup = a + b;
+			return additup;
 
 	}
 
-	console.log(additup(1,2));
-
-</script>
+	console.log(additup(a,b));
 
 
+// <!-- excercise 3 -->
 
-<!-- excercise 3 -->
 
-<script type="text/javascript">
-	"use strict";
 
 	// this function subtracts two arguments passed to it
 	function subitdn(a, b) {
-
-		subitdn = a - b;
-		return subitdn;
-
+			
+			subitdn = a - b;
+			return subitdn;
 	}
 
-	console.log(subitdn(1,2));
-
-</script>
+	console.log(subitdn(a,b));
 
 
-<!-- excercise 4 -->
 
-<script type="text/javascript">
-	"use strict";
+// <!-- excercise 4 -->
+
 
 	// this function multiplies two arguments together
 	function multIt(a, b) {
-
-		multIt = a * b;
-		return multIt;
+			
+			multIt = a * b;
+			return multIt;
 
 	}
 
-	console.log(multIt(1,2));
-
-</script>
+	console.log(multIt(a,b));
 
 
 
+// <!-- excercise 5 -->
 
-<!-- excercise 5 -->
 
-<script type="text/javascript">
-	"use strict";
 
 	// this function divides the first argument passed by the second argument
 	function divIt(a, b) {
+			
+		if (b != 0) {
+			divIt = a / b;
+			return divIt;
+		} else {
 
-		divIt = a / b;
-		return divIt;
-
+			console.log("division by " + b + " is not defined");
+		}
 	}
 
-	console.log(divIt(1,2));
-
-</script>
+	console.log(divIt(a,b));
 
 
-<!-- excercise 6 -->
+// <!-- excercise 6 -->
 
-<script type="text/javascript">
-	"use strict";
+
 
 	// this function taks the modulus of the first number by the second 
-	function modIt(a, b) {
+	function modIt(a, b) {	
 
-		modIt = a % b;
-		return modIt;
+		if (b != 0) {
+
+			modIt = a % b;
+			return modIt;
+
+		} else {
+
+			console.log("division by " + b + " is not defined");
+
+		}
 
 	}
 
-	console.log(modIt(1,2));
+	console.log(modIt(a,b));
 
 </script>
+
 
 
 </body>
