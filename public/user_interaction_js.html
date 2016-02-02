@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+	<title>user interaction test</title>
+	<meta charset = "utf8">
+
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		// todo: Ask the user for their name.
+		//       Keep asking if an empty input is provided.
+
+
+		var response;
+		var isPizza;
+
+		do {
+			
+			response = prompt("What is your favorite color?");
+			
+			if (response != null) {
+
+					response = response.trim();
+			}
+
+
+
+		} while (response == "");
+
+
+		// todo: Show an alert message that welcomes the user based on their input.
+
+
+		alert("Welcome friend\! I am also very fond of the color " + response + "\!")
+
+		// todo: Ask the user if they like pizza.
+		//       Based on their answer show a creative alert message.
+
+
+		do {
+			isPizza = confirm("Do you want some pizza dear one?");
+
+		} while (isPizza == "" && isPizza == null);
+
+		if (isPizza) {
+
+			alert("feed me seymore\! You " + response + " monster\!");
+		} else {
+
+			alert("you are an alien");
+		}
+
+
+	</script>
+
+</body>
+</html>
