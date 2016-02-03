@@ -21,11 +21,13 @@
 
 		<script type="text/javascript">
 
-		( function() {
+		// ( function() {
 			// todo:
 			// Create an array of 4 names using literal array notation, in a variable called 'names'.
 
 				var names = ["Carol", "Marsha", "Jan", "Debi"];
+				var namesString = "";
+				var namesLetters = [""];
 
 			// todo:
 			// Create a log statement that will log the number of elements in the names array.
@@ -41,7 +43,33 @@
 
 				};
 
-		})();
+
+				console.log("here\'s a story, of a lovely lady...");
+
+			// same code but using a for.each definition 
+
+				names.forEach( function(element, index, array) {
+
+					console.log(element + " is the " + i + " element");
+					console.log("Here is the array\: " + array);
+
+				});
+
+
+				names.forEach( function(element,index, array) {
+
+					namesString += element;
+					return namesString;
+
+				});
+
+				console.log(namesString);
+
+				namesLetters = namesString.split("");
+
+				console.log(namesLetters);
+
+		// })();
 		
 		</script>
 
