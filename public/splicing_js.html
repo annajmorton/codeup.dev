@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	
+		<title>Class practice splicing</title>
+		
+		<meta charset="utf8">
+
+	</head>
+
+
+
+	<body>
+
+		<script type="text/javascript">
+		"use strict"
+
+			var fruits = ["starfruit", "banana", "kiwi", "lemon", "apple", "loquat", "potato"];
+
+			var fruitNL = "";
+			var fruitSub = "";
+
+
+			console.log(fruits);
+
+			fruitNL = prompt("Which fruit don\'t you like?");
+
+			fruitSub = prompt("What would you like instead?");
+
+			
+			var i = fruits.indexOf(fruitNL);
+
+			fruits.splice(i,1, fruitSub);
+
+			console.log("Here's the new list\: ");
+			console.log(fruits);
+
+
+		</script>
+
+	</body>
+
+</html>
+
