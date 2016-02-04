@@ -54,6 +54,11 @@
 			
 				planets.forEach( function(elements, i, array) {
 
+					if(planetsAsString2 == ""){
+
+							planetsAsString2 = elements;
+					}
+
 					planetsAsString2 = planetsAsString2 + "|" + elements;
 
 					return planetsAsString2;
@@ -67,15 +72,20 @@
 		// custom join function 
 
 
-				function joinArray(array) {
+				function joinArray(array, delimiter) {
 
 					var newString = "";
 
 					array.forEach( function(elements, i, array) {
 
-					newString = newString + "|" + elements;
+						if(newString == ""){
 
-					return newString;
+							newString = elements;
+						}
+
+						newString = newString + delimiter + elements;
+
+						return newString;
 
 					});
 
@@ -83,7 +93,7 @@
 
 				}
 
-				planetsAsString3 = joinArray(planets);
+				planetsAsString3 = joinArray(planets, "|");
 
 				console.log(planetsAsString3);
 

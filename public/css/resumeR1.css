@@ -42,6 +42,12 @@ body{
 
 /*this is all the modal junk - leave it alone*/
 
+#exp-modal{
+
+	margin-top:100px;
+}
+
+
 .modal-header{
 
 	float: left;
@@ -58,10 +64,6 @@ body{
 }
 
 
-.modal.fade{
-
-	/*background-color: papayawhip;*/
-}
 
 .modal-content{
 
