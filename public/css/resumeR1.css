@@ -13,39 +13,39 @@ body{
 
 
 .masthead-brand{
-	font-size: 400%; 
+/*	font-size: 400%; */
 	/*font-family: 'Caesar Dressing', cursive;*/
-	float: left;
+/*	float: left;
 	display: block;
 	padding-top: 20px;
-
+*/
 
 }
 
 .masthead-nav{
-	/*font-size: 200%;
+/*	font-size: 200%;
 	font-family: 'Caesar Dressing', cursive;
 	color: floralwhite;*/
-	/*float: left;*/	
-	clear: left;
+	/*float: left;	
+	clear: left;*/
 }
 
 
-.masthead-nav li {
+/*.masthead-nav li {
 	display: block;
 	
 	
-}
+}*/
 
 
 
 
 /*this is all the modal junk - leave it alone*/
 
-#exp-modal{
+/*#exp-modal{
 
 	margin-top:100px;
-}
+}*/
 
 
 .modal-header{

@@ -1,0 +1,24 @@
+{
+	"f-150" : {
+		"wheels" : 4,
+		"make" : "ford",
+		"model" : "f-150",
+		"spare" : true,
+		"transmission" : "automatic",
+	},
+
+	"mazda 3" : {
+		"wheels" : 4,
+		"make" : "mazda 3",
+		"model" : "mazda 3",
+		"spare" : true,
+		"transmission" : "manual",
+		"passengers" : [ "Cameron", "Riley", "Cameron's Mom", "Mars"],
+
+
+	}
+
+
+
+
+}

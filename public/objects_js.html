@@ -32,15 +32,16 @@
 
 					return "The car is a " + this.make + " " + this.model;
 				},
-				"getMakeAndModel" : this.getMakeAndModel(),
-				"getFirstYear" : function () {
+				
+				"getFirstYear" : function () {	
 
 					var yearsInOrder = this.years.sort();
 					return yearsInOrder[0];
 				},
 			}	
 
-
+			console.log(car.getMakeAndModel());
+			console.log(car.getFirstYear());
 
 		</script>
 
