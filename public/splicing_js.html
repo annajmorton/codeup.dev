@@ -22,6 +22,7 @@
 
 			var fruitNL = "";
 			var fruitSub = "";
+			var listMatch = false;
 
 
 			console.log(fruits);
@@ -29,12 +30,29 @@
 
 			do {
 
-			fruitNL = prompt("Which fruit don\'t you like?");
+
+				fruitNL = prompt("Which fruit don\'t you like?");
+
+				
+				forEach()
+
+
+			}while(fruitNL == "" && listMatch == true);
+
+
+				do {
+
+			fruitSub = prompt("What would you like instead?");
+
+				if(fruitSub != "") {
+
+					fruitSub.trim();
+
+				}
+
 
 			}while(fruitNL == "");
 
-
-			fruitSub = prompt("What would you like instead?");
 
 			
 			var i = fruits.indexOf(fruitNL);
@@ -43,6 +61,14 @@
 
 			console.log("Here's the new list\: ");
 			console.log(fruits);
+
+
+			var dances = ["hey yah", "cuban suffel", "hokey pokey", "tango", "flocorico", "batchata", "foxtrot"];
+
+			var bodyP = ["left hand", "right hand", "left foot", "right foot", "head", "hips", "left leg", "right leg"];
+
+
+			dances.splice(1,1);
 
 
 		</script>
