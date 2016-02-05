@@ -12,40 +12,48 @@ body{
 
 
 
-.masthead-brand{
-/*	font-size: 400%; */
-	/*font-family: 'Caesar Dressing', cursive;*/
-/*	float: left;
-	display: block;
-	padding-top: 20px;
-*/
+.masthead-brand h1 {
+
+	font-size: 24px;
+	position: float;
+	margin: auto;
+	padding-top: 10%;
 
 }
 
-.masthead-nav{
-/*	font-size: 200%;
-	font-family: 'Caesar Dressing', cursive;
-	color: floralwhite;*/
-	/*float: left;	
-	clear: left;*/
+
+.nav .masthead-nav .nav-pills ul {
+
+	font-size: 12px;
+	position: float;
+	margin: auto;
+
+
+
 }
 
 
-/*.masthead-nav li {
-	display: block;
+.masthead-nav li a{
+
+	background-image: url(/img/granite-pebble-beach-close-up.jpg);
+	background-size: 20%;
+	border-radius: 50%;
+	border-width: 100px;
+	border-color: pink;
+	/*border-color: #331a00;*/
 	
-	
-}*/
+	color: #331a00;
+	font-size: 10%;
+	margin-left: 10px;  s
+	margin-right: 10px;
+
+}
 
 
 
 
-/*this is all the modal junk - leave it alone*/
 
-/*#exp-modal{
 
-	margin-top:100px;
-}*/
 
 
 .modal-header{

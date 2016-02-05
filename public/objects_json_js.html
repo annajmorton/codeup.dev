@@ -100,11 +100,35 @@
 
 
 				books.forEach( function (element, index, array) {
-				    console.log("Book #" + index);
+				    console.log("Book #" + (index+1));
 				    console.log("Title: " + element.Title);
 				    console.log("Author: " + element.Author.firstName + " " + element.Author.lastName);
 				    console.log("---");
 				});
+
+
+				var bigOlstring = "";
+
+				books.forEach( function (element, index, arry) {
+
+					bigOlstring = "\n" + bigOlstring + element.Title + " was written by " + element.Author.firstName + " " + element.Author.lastName + "\n";
+				});
+
+				console.log(bigOlstring);
+
+
+				var bigOlarray = [];
+
+				books.forEach( function (element, index, arry) {
+
+					bigOlarray[index] = element.Title + " was written by " + element.Author.firstName + " " + element.Author.lastName;
+						
+						console.log(bigOlarray[index]);
+
+				});
+
+
+
 
 		</script>
 
