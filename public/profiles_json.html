@@ -980,32 +980,80 @@
         },
         "EyeColorCommon" : function () {
 
-            var eyeArray = [];  
-            var ibrown = 0;
-            var iblue = 0;
-            var igreen = 0;
+            var mostEye = "starter";  
+            var countMost = 0;
+            var tempEye = 0;
+            var countTemp = 0;
+       
 
-            arrayOfProfiles.forEach( function (element, i, array) { 
 
-                  eyeArray.push(element.eyeColor);
+            for (var i = 0; i < arrayOfProfiles.length; i++) {
+              
 
-                  if (element.eyeColor == "brown") {
+                tempEye = arrayOfProfiles[i].eyeColor;
+                countTemp = 0;
 
-                        ibrown += 1;
+                for (var j = 0; j < arrayOfProfiles.length; j++) {
+                  
+                      if (tempEye == arrayOfProfiles[j].eyeColor) {
 
-                  } else if (element.eyeColor == "blue") {
+                          countTemp++;
 
-                        iblue += 1;
+                      };
+                };
 
-                  } else if (element.eyeColor == "green") {
 
-                        igreen += 1;
+                if (countTemp > countMost) {
 
-                  };
+                    countMost = countTemp;
+                    mostEye = tempEye;
 
-            });
+                };
 
-            return {eyeArray, ibrown, iblue, igreen};
+            };
+
+            return mostEye;
+
+            // arrayOfProfiles.forEach( function (element, i, array) { 
+
+            //       eyeArray.push(element.eyeColor);
+
+            //       if (element.eyeColor == "brown") {
+
+            //             ibrown += 1;
+
+            //       } else if (element.eyeColor == "blue") {
+
+            //             iblue += 1;
+
+            //       } else if (element.eyeColor == "green") {
+
+            //             igreen += 1;
+
+            //       };
+
+            // });
+
+            // sortEye = [ibrown, iblue, igreen];
+
+            // console.log(sortEye);
+
+            // sortEye.sort;
+
+
+            // if (sortEye[0] == ibrown ) {
+
+            //     return "brown";
+              
+            // } else if (sortEye[0] == iblue) {
+
+            //     return "blue";
+
+            // } else if (sortEye[0] == igreen) {
+
+            //     return "green";
+            // }
+
 
         },
         "BalanceTvsBF" : function () {
@@ -1039,6 +1087,11 @@
 
       
               num = num.toFixed(2);
+              num = num.toString();
+              if (num.length >= 7 && num.length < 10) {
+
+                  num = num.substring(0, num.length - 6)+ ","+ num.substring(num.length - 6,num.length);
+              };
 
               return num;
 
@@ -1051,14 +1104,23 @@
 
   console.log("Total number of profiles " + report.totProfileCount);
   console.log("Number of active profiles " + report.numActProfiles());
-  console.log("Total profile balance $" + report.totProfileBalance());
-  console.log("Average profile balance $" + report.avgProfileBalance());
-  console.log("Average user age " + report.avgUserAge());
+  console.log("Total profile balance $" + report.NumFormator( report.totProfileBalance() ));
+  console.log("Average profile balance $" + report.NumFormator( report.avgProfileBalance() ));
+  console.log("Average user age " + report.NumFormator( report.avgUserAge() ));
   console.log("There are " + report.GenderCount()[0] + " female, " + report.GenderCount()[1] + " male, and " + report.GenderCount()[2] + " other users.");
-  console.log(report.CompanyList());
-  console.log(report.EyeColorCommon());
-  console.log("The active profile balances total to " + report.BalanceTvsBF()[0] + " and the inactive profile balances total to " + report.BalanceTvsBF()[1]);
-  console.log( report.NumFormator(4.99980));
+
+    console.log("Here is a list of all the companies represented by the users\:");
+      report.CompanyList().forEach(function(element, index, array) { 
+  
+          console.log("\n" + element + "\n");
+
+      });
+
+
+
+  console.log("The most commonly occuring eye color is " + report.EyeColorCommon());
+  console.log("The active profile balances total to $" + report.NumFormator( report.BalanceTvsBF()[0] ) + " and the inactive profile balances total to $" + report.NumFormator( report.BalanceTvsBF()[1]) );
+  
   
 
 
