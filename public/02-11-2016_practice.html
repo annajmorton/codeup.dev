@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	
+		<title>in class practice</title>
+		
+		<meta charset="utf8">
+
+	</head>
+
+
+
+	<body>
+
+		<h1>in class practice</h1>
+
+
+
+		<script type="text/javascript">
+
+			"use strict"
+
+			
+			var count = 10;
+			var min = 0;
+			var interval = 1000;
+
+			var intervalId = setInterval( function () {
+					
+					if (count == min ) {
+
+
+						console.log("lift off!!!!!");
+						clearInterval(intervalId);
+
+					} else {
+
+						console.log(count);
+						--count;
+					};
+
+			}
+			, interval);
+
+			var counter2 = 0;
+			var timeoutID;
+
+			var annoying = function () {
+
+				console.log(counter2 + "Hey! Listen!");
+				counter2++;
+
+				timeoutID = setTimeout (annoying, 1000);
+
+			};
+
+			timeoutID = setTimeout(annoying, 1000);
+
+
+		</script>
+
+	</body>
+
+</html>
+
