@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	
+		<title>My very own calculator!</title>
+		
+		<meta charset="utf8">
+
+		<!-- Twitter BS -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+		<style type="text/css">
+			h2{
+
+				float: left;
+				margin:10px;
+				background-color: salmon;
+			}
+			
+			.bUp{
+				clear: both;
+			}
+
+		</style>
+
+	</head>
+
+
+
+	<body>
+
+		<h1>Here we gooooooo!</h1>
+
+		<!-- screen -->
+
+
+				<h2 id="Loperand">_</h2>
+				<h2 id="operator">_</h2>
+				<h2 id="Roperand">_</h2>
+				<br>
+
+
+		<!-- number buttons -->
+
+		<div class = "bUp">
+
+
+				<button class= "buTTon" id="b0">0</button>
+				<button class= "buTTon" id="b1">1</button>
+				<button class= "buTTon" id="b2">2</button>
+				<button class= "buTTon" id="b3">3</button>
+				<button class= "buTTon" id="b4">4</button>
+				<br>
+				<button class= "buTTon" id="b5">5</button>
+				<button class= "buTTon" id="b6">6</button>
+				<button class= "buTTon" id="b7">7</button>
+				<button class= "buTTon" id="b8">8</button>
+				<button class= "buTTon" id="b9">9</button>
+				<br>
+
+
+		<!-- operator buttons -->
+
+				<button class= "buTTon" id="ba">+</button>
+				<button class= "buTTon" id="bs">-</button>
+				<button class= "buTTon" id="bm">*</button>
+				<button class= "buTTon" id="bd">/</button>
+				<button class= "buTTon" id="dt">.</button>
+				<br>
+				<button class= "buTTon" id="eQl">=</button>
+
+		<!-- Clear my entire life brain heart and all hopes button -->
+
+				<button id="cLeaR">C</button>
+
+
+		</div>
+
+		<!-- the magic happens here! -->
+
+		<script type="text/javascript">
+
+		"use strict"
+
+
+		// functions
+
+			function pushB (event) {
+
+				var Loperand = document.getElementById("Loperand");
+				var operator = document.getElementById("operator");
+				var Roperand = document.getElementById("Roperand");
+				var gateway = "";
+
+				console.log(this.innerText);
+
+				gateway = this.innerText;
+
+				if (!isNaN(gateway)) {
+
+					if (Loperand.innerText != "_") {
+
+						Roperand.innerText = this.innerText;
+						return gateway;
+					
+					};
+
+					Loperand.innerText = this.innerText;
+
+				} else {
+
+
+					if (gateway == "=") {
+
+						// here's the math!!!!
+						var output;
+						
+						output = OperAtion(Loperand.innerText,operator.innerText, Roperand.innerText);
+						
+
+						console.log(output);
+						
+						Loperand.innerText = output;
+						operator.innerText = "_";
+						Roperand.innerText = "_";
+
+						return gateway;
+
+						
+
+					} else if (gateway == "C") {
+
+						console.log("we made it in\!");
+
+						Loperand.innerText = "_";
+						operator.innerText = "_";
+						Roperand.innerText = "_";
+
+						return gateway;
+
+					} else if (gateway == ".") {
+
+
+
+					} else {
+
+						operator.innerText = this.innerText;
+
+					};
+
+				};
+
+
+
+
+
+			};
+
+			function OperAtion (L, Op, R) {
+
+				L = parseFloat(L);
+				R = parseFloat(R);
+
+				if (Op == "+") {
+
+					return L + R;
+
+				} else if (Op == "-") {
+
+					return L - R;
+
+				} else if (Op == "*") {
+
+					return L * R;
+
+				} else {
+
+					if (R == 0) {
+
+						alert("Division by 0 is undefined");
+						return "undefined"
+
+					};
+
+					return L / R;
+
+				};
+
+			};
+
+
+		// variables 
+
+			var buTTon = document.getElementsByClassName("buTTon");
+	
+
+		// all other code crap
+
+			for (var i = 0; i < buTTon.length; i++) {
+				buTTon[i].addEventListener("click",pushB, false);
+			};
+
+			document.getElementById("cLeaR").addEventListener("click",pushB, false);
+
+
+		</script>
+
+
+
+		<!-- BS and more BS -->
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+	</body>
+
+</html>
+
