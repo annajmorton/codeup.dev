@@ -13,7 +13,12 @@
 
         button {
 
-            clear: right;
+            clear: both;
+        }
+
+        .{
+
+            background-color: pink;
         }
 
     </style>
@@ -38,11 +43,12 @@
         var detonationTimer = 5;
         var interval = 1000;
         var pageImg = document.getElementById("page-img");
+        var buttonCray = document.getElementById("defuser");
+        var prezColor = "#ff0000"
+        var bcount = 0;
 
 
-        // TODO: This function needs to be called once every second
-        function updateTimer()
-        {
+        function updateTimer() {
             
             if (detonationTimer == 0) {
                 alert('EXTERMINATE!');
@@ -53,34 +59,76 @@
                 document.getElementById('timer').innerHTML = detonationTimer;
             }
 
+                intervalId2 = setInterval(function(){
+
+                    prezColor = randoColor(prezColor);
+
+                    buttonCray.style.backgroundColor = prezColor; 
+
+                    console.log(prezColor);
+
+
+                }, 50);
+
             detonationTimer--;
 
-        }
+        };
+
+
+        function randoColor(prezColor) {
+            
+            prezColor = prezColor.substring(0,prezColor.length - 2);
+
+            prezColor = prezColor + Math.floor((Math.random()*(100-10))+10);
+
+        };
+
 
         var intervalId = setInterval(updateTimer, interval);
 
-        // TODO: When this function runs, it needs to
-        // cancel the interval/timeout for updateTimer()
+
         function defuseTheBOM()
         {
             clearInterval(intervalId);
-            pageImg.setAttribute("src", "./img/thumbs-up.png")
-            back
+            clearInterval(intervalId2);
+            pageImg.setAttribute("src", "./img/thumbs-up.png");
+            buttonCray.style.display = "none";
+            document.getElementById("message").innerHTML = "";
+            var prezColor = "#66ffff"; 
+            pageImg.style.backgroundColor = prezColor;
 
-            alert("Good work Agent!!!!");
+            // timeoutId = setTimout( function (prezColor) {
 
-        }
+            //     prezColor = randoColor(prezColor);
+            //     document.style.backgroundColor = prezColor;
+
+            // }, 50);
+
+        };
+
+
+
+        
+
+        
+
+
+
+        // TODO: When this function runs, it needs to
+        // cancel the interval/timeout for updateTimer()
+
+
 
         // Don't modify anything below this line!
         //
         // This causes the defuseTheBOM() function to be called
         // when the "defuser" button is clicked.
         // We will learn about events in the DOM lessons
+
         var defuser = document.getElementById('defuser');
         defuser.addEventListener('click', defuseTheBOM, false);
 
-
-
+        // document.addEventListener("click",stopTout,false);
 
 
     </script>
