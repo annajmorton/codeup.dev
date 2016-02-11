@@ -70,8 +70,7 @@
 						   if (status == google.maps.GeocoderStatus.OK) {
 						     
 						       map.setCenter(results[0].geometry.location);
-							   
-							   
+							  
 
 							   var marker = new google.maps.Marker({
 
@@ -82,12 +81,46 @@
 							   })
 
 
-							   var tTag = new google.maps.InfoWindow({
+							   var line = new google.maps.Polyline({
 
-							   		content: "<h1>My Love!</h1> <p>my belly misses you desperatly</p>"
+							   	 path: [results[0].geometry.location , {lat: 18.291, lng: 153.027}],
+								 icons: [{
+								 icon: marker,
+								 offset: '100%'
+								    }],
+								    map: map
+
 							   })
 
-							   tTag.open(map, marker);
+							 //   animateMarker(line);
+
+
+							 //   function animateMarker(line) {
+								//     var count = 0;
+								//     window.setInterval(function() {
+								//       count = (count + 1) % 200;
+
+								//       console.log(icons);
+
+								//       var icons = line.get('icons');
+								//       icons[0].offset = (count / 2) + '%';
+								//       line.set('icons', icons);
+								//   }, 20);
+								// }
+
+							   var tTag = new google.maps.InfoWindow({
+
+							   		content: "<h1>My Love!</h1> <p> <h2>my belly misses you desperatly</h2></p> <p>when I think of our deconstructed cookie dough with a cup of warm coffee, I feel the crushing weight of our separation like... tons of creamy, vanillia and dark chololate goodness resting on my chest. Darling, i simply cannot breath"
+							   })
+
+
+
+							   marker.addListener("click", function(){
+
+							   		tTag.open(map, marker);
+
+							   });
+
 
 						   } else {
 
@@ -99,6 +132,10 @@
 
 
 				});
+
+
+				
+
 
 		    // })();
 

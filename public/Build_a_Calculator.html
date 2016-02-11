@@ -16,22 +16,33 @@
 
 			.diSSplay{
 
-				background-color: salmon;
-				color: salmon;
+				background-color: black;
+				color: black;
 
 			}
 
 			.dSee{
 
 				/*This is a class inserted by Javascrtip on class diSSplay below to turn the text to a different color than the background (so you can see it)*/
-				background-color: salmon;
-				color: black;
+				background-color: black;
+				color: Aquamarine;
 			}
 
-			#messInBottle{
+			h1{
 				
-				margin:0 auto;
+				text-align: center;
 
+			}
+
+			button{
+
+				border-radius: 5%;
+				font-size: 200%;
+			}
+
+			.diSSplay{
+
+				text-align: center;
 			}
 
 		</style>
@@ -45,7 +56,7 @@
 
 			<div class = "row">
 				<div class="col-xs-1"></div>
-				<h1 class= "col-xs-10" id="messInBottle">Here we gooooooo!</h1>
+				<div class= "col-xs-10"><h1>cALc U LATor</h1></div>
 				<div class="col-xs-1"></div>
 			</div>
 
@@ -121,6 +132,9 @@
 			var operator = document.getElementById("operator");
 			var Roperand = document.getElementById("Roperand");
 			
+			var onL = false;
+			var onO = false;
+			var onR = false;
 
 		
 		
@@ -133,6 +147,7 @@
 
 				var gateway = "";
 				var deCimAl = true;
+
 
 
 				console.log(this.innerText);
@@ -162,44 +177,41 @@
 
 						deCimAl = false;
 
-						dSee(true, false, false);
-
 						operator.innerText = "_";
 						Roperand.innerText = "_";
 
-						return gateway;
+						onL = true;
+						onO = false;
+						onR = false;
+
+						// return gateway;
 
 						
 
 					} else if (gateway == "C") {
 
-						console.log("we made it in\!");
-
-						Loperand.innerText = "_";
-						operator.innerText = "_";
-						Roperand.innerText = "_";
-						dSee(false, false, false);
-
-
-						return gateway;
+						return location.reload(true);
 
 
 					} else if (gateway == ".") {
 						
-						if (true) {}; CheckLR(gateway, deCimAl); 
+						CheckLR(gateway, deCimAl); 
 
 
 					} else {
 
 						operator.innerText = this.innerText;
-						dSee(true, true, true);
 
-					};
+						onO = true;
 
-				};
+					}
+
+				}
+
+				dSee(onL, onO, onR);
 
 
-			};
+			}
 
 			
 			function CheckLR (gateway, deCimAl) {
@@ -210,27 +222,30 @@
 			   var gatewayL = Loperand.innerText.replace("_","") + gateway;
 			   var gatewayR = Roperand.innerText.replace("_","") + gateway;
 
-		
+				console.log("ha " + gatewayL);
+
+		   	   if (gateway== ".") {
+ 
+		   	   		console.log("Tra " + Loperand.innerText);
+ 
+	   	  		 	if (Loperand.innerText.indexOf(".") != -1 || Roperand.innerText.indexOf(".") != -1 ) {
+ 
+	   	  		 		return;
+	   	  		 	}
+ 
+		   	   }
 
 			   if (Loperand.innerText == "_" || operator.innerText == "_" && deCimAl) {
 
-			   	  if (gateway== ".") {
-
-		   	  			if (gatewayL.search(".") == 0) {
-
-		   	  				return;
-		   	  			}
-
-			   	  }
 
 			   	  Loperand.innerText = gatewayL;
-			   	  dSee(true, false, false);
+			   	  onL = true;
 			
 			   } else {
 
 				  Roperand.innerText = gatewayR;
 
-				  dSee(true,false,true);
+				  onR = true;
 
 			   };
 
@@ -298,14 +313,14 @@
 				if (onR) {
 
 					Roperand.className += " dSee";
-					console.log("true " + Roperand.value);
+					console.log("true " + Roperand.innerText);
 
 				} else {
 
 					Roperand.className = Roperand.className.replace(" dSee", "");
 
 
-					console.log("false " + Roperand.value);
+					console.log("false " + Roperand.innerText);
 				}
 				
 
