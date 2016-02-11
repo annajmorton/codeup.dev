@@ -13,15 +13,25 @@
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
 		<style type="text/css">
-			h2{
 
-				float: left;
-				margin:10px;
+			.diSSplay{
+
 				background-color: salmon;
+				color: salmon;
+
 			}
-			
-			.bUp{
-				clear: both;
+
+			.dSee{
+
+				/*This is a class inserted by Javascrtip on class diSSplay below to turn the text to a different color than the background (so you can see it)*/
+				background-color: salmon;
+				color: black;
+			}
+
+			#messInBottle{
+				
+				margin:0 auto;
+
 			}
 
 		</style>
@@ -31,50 +41,72 @@
 
 
 	<body>
+	<div class = "container-fluid">
 
-		<h1>Here we gooooooo!</h1>
+			<div class = "row">
+				<div class="col-xs-1"></div>
+				<h1 class= "col-xs-10" id="messInBottle">Here we gooooooo!</h1>
+				<div class="col-xs-1"></div>
+			</div>
 
 		<!-- screen -->
 
-
-				<h2 id="Loperand">_</h2>
-				<h2 id="operator">_</h2>
-				<h2 id="Roperand">_</h2>
-				<br>
+			<div class = "row">
+				<div class="col-xs-1"></div>
+					<h2 class= "col-xs-4 diSSplay" id="Loperand">_</h2>
+					<h2 class= "col-xs-2 diSSplay" id="operator">_</h2>
+					<h2 class= "col-xs-4 diSSplay" id="Roperand">_</h2>
+				<div class="col-xs-1"></div>
+			</div>
 
 
 		<!-- number buttons -->
 
 		<div class = "bUp">
 
+			<div class = "row">
+				<div class="col-xs-1"></div>
+				<button class= "col-xs-2 buTTon" id="b0">0</button>
+				<button class= "col-xs-2 buTTon" id="b1">1</button>
+				<button class= "col-xs-2 buTTon" id="b2">2</button>
+				<button class= "col-xs-2 buTTon" id="b3">3</button>
+				<button class= "col-xs-2 buTTon" id="b4">4</button>
+				<div class="col-xs-1"></div>
+			</div>
 
-				<button class= "buTTon" id="b0">0</button>
-				<button class= "buTTon" id="b1">1</button>
-				<button class= "buTTon" id="b2">2</button>
-				<button class= "buTTon" id="b3">3</button>
-				<button class= "buTTon" id="b4">4</button>
-				<br>
-				<button class= "buTTon" id="b5">5</button>
-				<button class= "buTTon" id="b6">6</button>
-				<button class= "buTTon" id="b7">7</button>
-				<button class= "buTTon" id="b8">8</button>
-				<button class= "buTTon" id="b9">9</button>
-				<br>
+			<div class = "row">	
+				<div class="col-xs-1"></div>
+				<button class= "col-xs-2 buTTon" id="b5">5</button>
+				<button class= "col-xs-2 buTTon" id="b6">6</button>
+				<button class= "col-xs-2 buTTon" id="b7">7</button>
+				<button class= "col-xs-2 buTTon" id="b8">8</button>
+				<button class= "col-xs-2 buTTon" id="b9">9</button>
+				<div class="col-xs-1"></div>
+			</div>	
 
 
 		<!-- operator buttons -->
 
-				<button class= "buTTon" id="ba">+</button>
-				<button class= "buTTon" id="bs">-</button>
-				<button class= "buTTon" id="bm">*</button>
-				<button class= "buTTon" id="bd">/</button>
-				<button class= "buTTon" id="dt">.</button>
-				<br>
-				<button class= "buTTon" id="eQl">=</button>
+			<div class = "row">
+				<div class="col-xs-1"></div>
+				<button class= "col-xs-2 buTTon" id="ba">+</button>
+				<button class= "col-xs-2 buTTon" id="bs">-</button>
+				<button class= "col-xs-2 buTTon" id="bm">*</button>
+				<button class= "col-xs-2 buTTon" id="bd">/</button>
+				<button class= "col-xs-2 buTTon" id="dt">.</button>
+				<div class="col-xs-1"></div>
+			</div>
 
+
+			<div class = "row">	
+				<div class="col-xs-1"></div>
+				<button class= "col-xs-5 buTTon" id="eQl">=</button>
 		<!-- Clear my entire life brain heart and all hopes button -->
+				<button class= "col-xs-5" id="cLeaR">C</button>
+				<div class="col-xs-1"></div>
+			</div>
 
-				<button id="cLeaR">C</button>
+
 
 
 		</div>
@@ -85,15 +117,23 @@
 
 		"use strict"
 
+			var Loperand = document.getElementById("Loperand");
+			var operator = document.getElementById("operator");
+			var Roperand = document.getElementById("Roperand");
+			
 
+		
+		
 		// functions
+
+		
+
 
 			function pushB (event) {
 
-				var Loperand = document.getElementById("Loperand");
-				var operator = document.getElementById("operator");
-				var Roperand = document.getElementById("Roperand");
 				var gateway = "";
+				var deCimAl = true;
+
 
 				console.log(this.innerText);
 
@@ -101,17 +141,12 @@
 
 				if (!isNaN(gateway)) {
 
-					if (Loperand.innerText != "_") {
-
-						Roperand.innerText = this.innerText;
-						return gateway;
-					
-					};
-
-					Loperand.innerText = this.innerText;
+											 
+					 CheckLR(gateway, deCimAl); 
 
 				} else {
 
+					
 
 					if (gateway == "=") {
 
@@ -124,6 +159,11 @@
 						console.log(output);
 						
 						Loperand.innerText = output;
+
+						deCimAl = false;
+
+						dSee(true, false, false);
+
 						operator.innerText = "_";
 						Roperand.innerText = "_";
 
@@ -138,26 +178,65 @@
 						Loperand.innerText = "_";
 						operator.innerText = "_";
 						Roperand.innerText = "_";
+						dSee(false, false, false);
+
 
 						return gateway;
 
-					} else if (gateway == ".") {
 
+					} else if (gateway == ".") {
+						
+						if (true) {}; CheckLR(gateway, deCimAl); 
 
 
 					} else {
 
 						operator.innerText = this.innerText;
+						dSee(true, true, true);
 
 					};
 
 				};
 
 
-
-
-
 			};
+
+			
+			function CheckLR (gateway, deCimAl) {
+
+			   gateway = gateway.replace("_","");
+			   console.log("Ba " + gateway);
+
+			   var gatewayL = Loperand.innerText.replace("_","") + gateway;
+			   var gatewayR = Roperand.innerText.replace("_","") + gateway;
+
+		
+
+			   if (Loperand.innerText == "_" || operator.innerText == "_" && deCimAl) {
+
+			   	  if (gateway== ".") {
+
+		   	  			if (gatewayL.search(".") == 0) {
+
+		   	  				return;
+		   	  			}
+
+			   	  }
+
+			   	  Loperand.innerText = gatewayL;
+			   	  dSee(true, false, false);
+			
+			   } else {
+
+				  Roperand.innerText = gatewayR;
+
+				  dSee(true,false,true);
+
+			   };
+
+		   	};
+
+
 
 			function OperAtion (L, Op, R) {
 
@@ -192,6 +271,48 @@
 			};
 
 
+			function dSee(onL, onO ,onR ) {
+
+				if (onL) {
+
+					Loperand.className += " dSee";
+
+				} else {
+
+					Loperand.className = Loperand.className.replace(" dSee", "");
+				}
+
+
+
+				if (onO) {
+
+					operator.className += " dSee";
+
+				} else {
+
+					operator.className = operator.className.replace(" dSee", "");
+				}
+
+
+
+				if (onR) {
+
+					Roperand.className += " dSee";
+					console.log("true " + Roperand.value);
+
+				} else {
+
+					Roperand.className = Roperand.className.replace(" dSee", "");
+
+
+					console.log("false " + Roperand.value);
+				}
+				
+
+			};
+
+
+
 		// variables 
 
 			var buTTon = document.getElementsByClassName("buTTon");
@@ -214,7 +335,7 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
-
+	</div>
 	</body>
 
 </html>
