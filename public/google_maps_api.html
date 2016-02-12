@@ -14,6 +14,12 @@
 	            width: 770px;
 	            height: 481px;
 	        }
+	         #map2-canvas {
+	            width: 770px;
+	            height: 481px;
+	            float: ;
+	        }
+
     	</style>
 
 	</head>
@@ -26,6 +32,8 @@
 
 		 <!-- div to hold map -->
    		 <div id="map-canvas"></div>
+   		 
+   		 <div id="map2-canvas"></div>
 
 
    		 <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
@@ -42,7 +50,7 @@
 		        
 		        var mapOptions = {
 		            
-		            zoom: 20,
+		            zoom: 16,
 		           
 		            center: {
 		                lat:  29.4284595,
@@ -55,6 +63,7 @@
 
 		        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 		   
+		   		 var map2 = new google.maps.Map(document.getElementById("map2-canvas"), mapOptions);
 
 		        var dusekAddy = "1227 W 18th St, Chicago, IL 60608";
 
@@ -80,12 +89,28 @@
 
 							   })
 
+							   var bbbk = results[0].geometry.location.lat();
 
+							    var bbbp = results[0].geometry.location.lng();
+
+
+							   console.log("Lat " + bbbk);
+							   console.log("Lng " + bbbp);
+
+							   var lineSymbol = {
+							   		
+							   		path: google.maps.SymbolPath.CIRCLE,
+							   		scale: 8,
+							   		strokeColor: '#393'
+
+							   };
+
+							   
 							   var line = new google.maps.Polyline({
 
-							   	 path: [results[0].geometry.location , {lat: 29.4284599, lng: -98.492439}],
+							   	 path: [results[0].geometry.location , results[0].geometry.location ],
 								 icons: [{
-								 icon: marker,
+								 icon: lineSymbol,
 								 offset: '100%'
 								    }],
 								    map: map
