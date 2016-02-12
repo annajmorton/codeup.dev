@@ -15,15 +15,99 @@
 
 	<body>
 		
+		
+		<h1 class= "codeup">Lorem ipsum </h1>
+
+		
+		<p>
+
+			dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut <em id="rockThis">labore</em> et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris <span id="dreamBig">nisi</span> ut aliquip ex ea commodo
+			consequat. 
+
+		</p>
+
+
+
+		<p>
+			Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. 
+
+			<div class = "bananas">
+				Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</div>
+		</p>
+
+
+		<blockquote class = "codeup">
+
+
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+		</blockquote>
+
+		<br>
+
+		<h2>Things I am thankful for</h2>
+		<ul>
+			<li class="codeup">I'm glad it is friday</li>
+			<li>my sister and mama</li>
+			<li>running this morning and the fog on the river</li>
+			<li>eggs</li>
+			<li><strong id="winterIsComing">beer</strong></li>
+		</ul>
+
+
+
+
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 
 		<script type="text/javascript">
-			window.onload = function () {
+		
+			$(document).ready( function() {
 
-				alert("the page has finished loading!");
-			}
+				alert("my hair is on fire!");
 
+
+				alert($('#winterIsComing').text);
+				console.log($('#winterIsComing').text());
+
+				alert($('.bestQever').html());
+				console.log($('.bestQever').html());
+
+
+
+				$('.codeup').css("background-color","yellow");
+
+				
+
+				$('.codeup').css({
+
+					"color" : "blue",
+					"text-decoration" : "underline"
+
+				})
+
+				$('.codeup').css({
+
+					"border-style" : "solid",
+					"border-width" : "1px",
+					"border-color" : "red"
+
+				})
+
+
+
+
+			});
 
 		</script>
 
