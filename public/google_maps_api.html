@@ -13,11 +13,12 @@
 	        #map-canvas {
 	            width: 770px;
 	            height: 481px;
+	            float: left;
 	        }
 	         #map2-canvas {
 	            width: 770px;
 	            height: 481px;
-	            float: ;
+	            float: left;
 	        }
 
     	</style>
@@ -108,7 +109,7 @@
 							   
 							   var line = new google.maps.Polyline({
 
-							   	 path: [results[0].geometry.location , results[0].geometry.location ],
+							   	 path: [results[0].geometry.location , {lat: 41.8576, lng: -87.66}],
 								 icons: [{
 								 icon: lineSymbol,
 								 offset: '100%'
@@ -119,21 +120,21 @@
 
 							   console.log(line.icons);
 
-							 //   animateMarker(line);
+							   animateMarker(line);
 
 
-							 //   function animateMarker(line) {
-								//     var count = 0;
-								//     window.setInterval(function() {
-								//       count = (count + 1) % 200;
+							   function animateMarker(line) {
+								    var count = 0;
+								    window.setInterval(function() {
+								      count = (count + 1) % 200;
 
-								//       console.log(icons);
+								      console.log(icons);
 
-								//       var icons = line.get('icons');
-								//       icons[0].offset = (count / 2) + '%';
-								//       line.set('icons', icons);
-								//   }, 20);
-								// }
+								      var icons = line.get('icons');
+								      icons[0].offset = (count / 2) + '%';
+								      line.set('icons', icons);
+								  }, 20);
+								}
 
 							   var tTag = new google.maps.InfoWindow({
 

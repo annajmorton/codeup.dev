@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	
+		<title>making is rain!!!</title>
+		
+
+		<meta charset="utf8">
+
+
+		<style type="text/css">
+
+			.invisible{
+
+				display: none;
+			}
+
+			a:active {
+
+				color: "blue";
+				text-decoration: underline;
+
+			}
+
+			a:link {
+
+				color: "black";
+				text-decoration: none;
+			}
+
+		</style>
+
+	</head>
+
+
+
+	<body>
+
+		<h1>FAQ about national parks!</h1>
+
+			<a href="#" id="showA"><h2>show me the money!!!</h2></a>
+
+
+			<dl>
+
+				<dt>Can you feed the animals?</dt>
+					<dd class= "invisible">the question is, can you not feed the animals... </dd>
+				<dt>When is your busy season?</dt>
+					<dd class= "invisible">Summer tIIIIIIIIme</dd>
+				<dt>How many national parks are there? </dt>
+					<dd class= "invisible">59!</dd>
+				<dt>What is the most visited National Park?</dt>
+					<dd class= "invisible">Great Smoky Mountains</dd>
+				<dt>How about number 2?</dt>
+					<dd class= "invisible">Grand Canyon</dd>
+				<dt>And third place?</dt>
+					<dd class= "invisible">Yosemite</dd>
+				<dt>How many people visit the national parks in one year?</dt>
+					<dd class= "invisible">in 2014 292,800,082 people visited the national park system</dd>
+				<dt>is there a national park in American Samoa</dt>
+					<dd class= "invisible">heck yes!</dd>
+				<dt>what is the largest national park?</dt>
+					<dd class= "invisible">Wrangell-St. Elias National Park and Preserve in AK</dd>
+				<dt>what is the smallest park?</dt>
+					<dd class= "invisible">Thaddeus Kosciuszko National Memorial in PA at 0.02 acres</dd>
+
+		<h1>Park specific facts</h1>
+
+				<h3>Ike (Eisenhower National Historic Site)</h3>
+					<ul>
+						<li>The park is in Pennsylvania</li>
+						<li>It is home to President Eisenhower's 230 acre farm</li>
+						<li>The farm is leased to a local farmer who must raise black angus cattle</li>
+
+					</ul>
+
+				<h3>Big Bend</h3>
+					<ul>
+					<li>Shelters more than 450 bird species</li>
+					<li>world-record pterosaur fossil was found here</li>
+					<li>Woody Guthrie spent a short time in the big bend region in 1921</li>
+					</ul>
+
+
+				<h3>Choke Canyon</h3>
+					<ul>
+
+						<li>part of the frio river watershed</li>
+						<li>surface area 25,670 acres</li>
+						<li>Maximum depth: 95.5 feet</li>
+
+
+					</ul>
+
+
+
+
+
+
+
+		</dl>
+
+
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+		"use strict"
+
+
+			$('#showA').on( "click", function(event){
+
+					
+				event.preventDefault();
+
+				console.log("i am working!!!");
+				$("dd").toggle("invisible");
+					
+
+			})
+
+			$('ul').each( function (i) {
+
+				$(this).children().first().css('font-weight' , 'bold');
+
+				console.log(i);
+			})
+
+
+			$('li').on("click", function(event) {
+
+				$(this).parents("ul").addClass("invisible");
+
+			})
+
+			$('h3').on("click", function(event) {
+
+				$(this).next('ul').removeClass("invisible"); 
+			})
+
+		</script>
+
+	</body>
+
+</html>
+

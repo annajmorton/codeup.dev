@@ -76,10 +76,33 @@
 
 		
 
-				$('h1, p, li').css("border","red solid 2px");
+				// $('h1, p, li').css("border","red solid 2px");
 
 
 
+				$('h1').click(function() {
+
+					$(this).css("background-color", "papayawhip");
+
+				});
+
+				$('p').dblclick(function() {
+
+					$(this).css("font-size", "18px");
+
+				})
+
+				$('li').hover(
+
+					function(){
+
+						$(this).css("color", "red")
+					},
+					function(){
+
+						$(this).css("color", "black")
+					}
+				)
 
 			});
 
