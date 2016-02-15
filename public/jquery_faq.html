@@ -105,13 +105,16 @@
 		"use strict"
 
 
+			$("dd").hide();	
+			$('ul').hide();
+
 			$('#showA').on( "click", function(event){
 
 					
 				event.preventDefault();
 
 				console.log("i am working!!!");
-				$("dd").toggle();
+				$("dd").fadeToggle();
 					
 
 			})
@@ -124,15 +127,9 @@
 			})
 
 
-			$('li').on("click", function(event) {
-
-				$(this).parents("ul").hide();
-
-			})
-
 			$('h3').on("click", function(event) {
 
-				$(this).next().show(); 
+				$(this).next().fadeToggle(); 
 			})
 
 		</script>
