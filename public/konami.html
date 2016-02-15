@@ -11,11 +11,11 @@
         "use strict";
 
         var koNamIcoDe = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
-        var waTchEr = [38];
-        var FsTinnerIf = true;
+        var waTchEr = [];
+        var counter = 0;
+
         var bkGrndColoR = "#ff00ff";
         var txtColoR = "#00ff00";
-        var counter = 0;
 
         
         // styling function for when the kon code does it well
@@ -25,13 +25,10 @@
             
             $('h1').html("<strong>aWeSOME!!!!</strong>");
 
-
-
             var intervalId = setInterval(function() { 
 
-                
+          
                 var randoNum = ((Math.random()* (99-10)) + 10).toFixed(0);
-            
                 bkGrndColoR = "#ff" + randoNum + "ff";
                 txtColoR = "#" + randoNum + "ff" + (100-randoNum);
 
@@ -42,11 +39,8 @@
                     "color" : txtColoR,
                 });
 
-                console.log(bkGrndColoR);
-
             }, 20)
 
-            
 
             var intervalId2 = setInterval( function () {
 
@@ -63,9 +57,8 @@
 
                 counter++;
 
-                console.log(poSe+poSeB+poSeA);
-
             }, 50);
+
         }
 
 
@@ -77,47 +70,25 @@
         
         $(document).keyup (function(event) {
 
-                console.log("Outter keyup " + event.keyCode);
+            waTchEr[counter] = event.keyCode
 
-                if (event.keyCode == 38 && FsTinnerIf) {
+            if ( waTchEr[counter]!= koNamIcoDe[counter]) {
 
-                    FsTinnerIf = false;
-                    counter = 1;
+                counter = 0;
+                waTchEr = [];
+               
+            } else {
 
-                   
+                 counter++;
 
-                        console.log("Inner If " + event.keyCode);
-                        
-                        $(document).on("keydown", function(event){
+                    if (counter == 10) {
 
+                        alert("my day has come!");
+                        someThingAwesome();
+            
+                    }   
+            }
 
-                            waTchEr[counter] = event.keyCode;
-
-                            console.log("inner keydown " + event.keyCode);
-                            console.log(counter);
-                            console.log(waTchEr[counter]);
-
-                            if (waTchEr[counter] != koNamIcoDe[counter]) {
-
-                                console.log("I'm out\!");
-                                FsTinnerIf = true;
-                                $(document).off("keydown");
-                            }
-
-                            if (counter == 9) {
-
-                                alert("my day has come!");
-                                someThingAwesome();
-                                $(document).off("keydown");
-                            }
-
-                            
-                            counter++;
-
-                        });
-
-
-                }
 
         });
 

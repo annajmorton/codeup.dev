@@ -13,10 +13,6 @@
 
 		<style type="text/css">
 
-			.invisible{
-
-				display: none;
-			}
 
 			a:active {
 
@@ -47,25 +43,25 @@
 			<dl>
 
 				<dt>Can you feed the animals?</dt>
-					<dd class= "invisible">the question is, can you not feed the animals... </dd>
+					<dd>the question is, can you not feed the animals... </dd>
 				<dt>When is your busy season?</dt>
-					<dd class= "invisible">Summer tIIIIIIIIme</dd>
+					<dd>Summer tIIIIIIIIme</dd>
 				<dt>How many national parks are there? </dt>
-					<dd class= "invisible">59!</dd>
+					<dd>59!</dd>
 				<dt>What is the most visited National Park?</dt>
-					<dd class= "invisible">Great Smoky Mountains</dd>
+					<dd>Great Smoky Mountains</dd>
 				<dt>How about number 2?</dt>
-					<dd class= "invisible">Grand Canyon</dd>
+					<dd>Grand Canyon</dd>
 				<dt>And third place?</dt>
-					<dd class= "invisible">Yosemite</dd>
+					<dd>Yosemite</dd>
 				<dt>How many people visit the national parks in one year?</dt>
-					<dd class= "invisible">in 2014 292,800,082 people visited the national park system</dd>
+					<dd>in 2014 292,800,082 people visited the national park system</dd>
 				<dt>is there a national park in American Samoa</dt>
-					<dd class= "invisible">heck yes!</dd>
+					<dd>heck yes!</dd>
 				<dt>what is the largest national park?</dt>
-					<dd class= "invisible">Wrangell-St. Elias National Park and Preserve in AK</dd>
+					<dd>Wrangell-St. Elias National Park and Preserve in AK</dd>
 				<dt>what is the smallest park?</dt>
-					<dd class= "invisible">Thaddeus Kosciuszko National Memorial in PA at 0.02 acres</dd>
+					<dd>Thaddeus Kosciuszko National Memorial in PA at 0.02 acres</dd>
 
 		<h1>Park specific facts</h1>
 
@@ -115,7 +111,7 @@
 				event.preventDefault();
 
 				console.log("i am working!!!");
-				$("dd").toggle("invisible");
+				$("dd").toggle();
 					
 
 			})
@@ -130,13 +126,13 @@
 
 			$('li').on("click", function(event) {
 
-				$(this).parents("ul").addClass("invisible");
+				$(this).parents("ul").hide();
 
 			})
 
 			$('h3').on("click", function(event) {
 
-				$(this).next('ul').removeClass("invisible"); 
+				$(this).next().show(); 
 			})
 
 		</script>
