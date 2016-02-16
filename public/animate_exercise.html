@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animate</title>
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0;
+        }
+
+        #btn-animate {
+            margin: 15px;
+        }
+
+        #animate-box {
+            background-color: #000033;
+            height: 250px;
+            margin: 15px;
+            position: relative;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <button id="btn-move">Move It</button>
+        <button id="btn-scale">Scale It</button>
+        <button id="btn-hide">Hide It</button>
+        <button id="btn-show">Show It</button>
+        <button id="btn-all">Animate All</button>
+    </p>
+
+    <div id="animate-box"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        "use strict";
+
+        function BoxWidth(bWidth) {
+
+             bWidth = bWidth.replace("px","");
+             bWidth = parseFloat(bWidth)*1.5;
+             bWidth = bWidth + "px";
+             return bWidth;
+
+        }
+        var bWidth = $("#animate-box").css("width");
+
+
+        // Button Functions
+
+            $("#btn-move").click(function () {
+
+                $("#animate-box").animate({ "left" : "+=100" })
+
+            })
+
+
+            $("#btn-scale").click(function(){
+
+                 bWidth = BoxWidth(bWidth);
+
+                 $("#animate-box").animate({"width" : bWidth})
+
+            })
+
+            $("#btn-hide").click(function() {
+
+                $("#animate-box").animate({"opacity" : 0.0})
+
+            })
+
+
+            $("#btn-show").click(function() {
+
+                $("#animate-box").animate({"opacity" : 1.0})
+
+            })
+           
+            
+            $("#btn-all").click( function() {
+
+                bWidth = BoxWidth(bWidth);
+                console.log("I am in the button");
+                var bWidthO = $("#animate-box").css("width");
+                var bHeightO = $("#animate-box").css("height");
+
+                $("#animate-box").animate({
+
+                    "left" : "+=100",
+                    "width" : bWidth
+
+                }).animate({
+
+                    "opacity" : 0.0
+
+                }).animate({
+
+                    "opacity" : 1.0
+                    "width" : bWidthO,
+                    "height" : bHeightO
+
+                    // try these out to go to the default values shttp://www.quirksmode.org/css/cascading/values.html
+
+
+                })
+
+            })
+
+
+
+        // TODO: "Animate All" should use an animation stack to:
+        //      1) Move and scale the box simultaneously
+        //      2) Hide the box
+        //      3) Reset the box back to its original position and opacity
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+
+<table id="products">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Categories</th>
+        </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script>
+(function() {
+    
+    $.ajax({
+
+        "url" : "/data/inventory.json",
+        "type" : "GET"
+    }).done(function (data) {
+
+        console.log("shut up");
+        console.log(this);
+        console.log(data);
+        var neWrow = "";
+
+
+
+        $(data).each(function (i, e) {
+
+
+            
+            // neWrow[i].append("<th>" + data[i].title + "</th>");
+            // neWrow[i].append("<th>" + data[i].quantity + "</th>");
+            // neWrow[i].append("<th>" + data[i].price + "</th>");
+            // neWrow[i].append("<th>" + data[i].catagories[0] + "</th>");
+
+            console.log(data[i].price);
+
+            $("#insertProducts").append("test");
+
+            console.log(neWrow);
+            
+            $("#insertProducts").append("<tr>" + neWrow[i] + "</tr>");
+
+        })
+
+
+    });
+
+
+
+    // TODO: Take the data from inventory.json and append it to the products table
+    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+    //             its contents and fields
+    //       HINT: You will want to target #insertProducts for your new HTML elements
+})();
+</script>
+
+</body>
+</html>

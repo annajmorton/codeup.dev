@@ -27,6 +27,8 @@
 				text-decoration: none;
 			}
 
+
+
 		</style>
 
 	</head>
@@ -101,6 +103,8 @@
 
 
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 		<script type="text/javascript">
 		"use strict"
 
@@ -108,13 +112,13 @@
 			$("dd").hide();	
 			$('ul').hide();
 
-			$('#showA').on( "click", function(event){
+			$('#showA').on( "click", function(){
 
 					
 				event.preventDefault();
 
 				console.log("i am working!!!");
-				$("dd").fadeToggle();
+				$("dd").slideToggle();
 					
 
 			})
@@ -127,9 +131,13 @@
 			})
 
 
-			$('h3').on("click", function(event) {
+			$('h3').on("click", function() {
 
-				$(this).next().fadeToggle(); 
+				// $(this).next().slideToggle(1000); 
+
+				jQuery.easing.def = "easeOutBounce";
+
+				$(this).next().animate({"width" : "toggle"}, 10000	); 
 			})
 
 		</script>
