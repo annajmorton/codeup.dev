@@ -30,5 +30,30 @@
             "tool"
         ],
         "price": 10
+    }, {
+        "title": "VomitBags",
+        "quantity": 0,
+        "categories": [
+            "luxury"
+        ],
+        "price": 100
+    }, {
+        "title": "New Brain",
+        "quantity": 1,
+        "categories": [
+            "resale"
+        ],
+        "price": 0.9
+    }, {
+        "title": "biTTyBUm",
+        "quantity": 100,
+        "categories": [
+            "resale"
+        ],
+        "price": 20
     }
+
+
+
+
 ]

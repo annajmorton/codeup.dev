@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	
+		<title>Blog</title>
+		
+		<meta charset="utf8">
+
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+		<style type="text/css">
+
+			h1 {
+
+				text-align: center;
+			}
+
+		</style>
+
+	</head>
+
+
+
+	<body>
+
+		<div class= "container-fluid">
+
+			
+			<div class= "row col-md-12"><h1>Blog Heading!</h1></div>
+			<div id="posts">
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+		<script type="text/javascript">
+		
+
+		(function(){
+
+		"use strict"
+
+			$.get("/data/blog.json", {
+
+
+
+			}).done( function (data) {
+
+				console.log(data)
+
+				data.forEach(function (element, index, array) {
+
+					var cOlt = $("<div>").addClass("col-md-1");
+					var cOld = $("<div>").addClass("col-md-1");
+					var cOlc = $("<div>").addClass("col-md-10");
+
+					var rOw = $("<div>");
+
+					cOlt.text(element.title);
+					cOld.text(element.date);
+					cOlc.text(element.content);
+
+					console.log(cOlt.html());
+
+					rOw.append(cOlt);
+					rOw.append(cOld);
+					rOw.append(cOlc);
+
+					$("#posts").append(rOw);
+
+
+
+				})
+
+			}).
+
+		})();
+
+
+
+
+
+		</script>
+
+	</body>
+
+</html>
+

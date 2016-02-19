@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	
+		<title></title>
+		
+		<meta charset="utf8">
+
+	</head>
+
+
+
+	<body>
+
+		whip it good!
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+		"use strict"
+
+
+		// 1 
+		// --- answer is 60
+		
+			var nmax = 328;
+			var n = 0;
+			var	count = 0;
+
+			while (n <= nmax) {
+				
+				var nString = n.toString();
+
+				// console.log(nString);
+
+				if (nString.indexOf("4") != -1) {
+
+					console.log("i'm in");
+					count ++;
+
+				}
+
+				n ++;
+
+				// console.log(n);
+
+			};
+
+
+			console.log(count);
+
+
+
+		// 2 is fibonacci number?
+		// 89-ft, 233-ft, 375-ff, 601-ff, 1597-ft, 4183-ff
+
+
+			function fibo(n) {
+				
+				var r1 = (5*(n*n)+4);
+				var r2 = (5*(n*n)-4);
+
+				console.log(r1 + " " + r2);
+				
+				var sQr1 = Math.sqrt(r1).toFixed(0);
+				var sQr2 = Math.sqrt(r2).toFixed(0);
+
+				console.log(sQr1 + " " + sQr2);
+
+				var t1 = false;
+				var t2 = false;
+
+				if (sQr1*sQr1 === r1) {
+
+					t1 = true;
+
+				};
+
+				if (sQr2*sQr2 === r2) {
+
+					t2 = true;
+
+
+				};
+
+					console.log(t1 + "  " + t2);
+				
+
+
+			};
+
+		//3 is fancy?
+		// 6001009-t 68089-t 484-t
+
+			function iSfAncY(n) {
+
+				var nString = n.toString();
+				var nArr = nString.split('');
+				var iSfAncY = true;
+
+				// console.log("nArr " + nArr);
+
+				while (nString.indexOf("6") != -1 || nString.indexOf("9") != -1) {
+					
+					nString = nString.replace("6","a");
+					nString = nString.replace("9","b");	
+
+				};
+
+				// console.log(nString);
+
+				while (nString.indexOf("a") != -1 || nString.indexOf("b") != -1) {
+					
+					nString = nString.replace("a","9");
+					nString = nString.replace("b","6");	
+
+				};
+
+				console.log(nString);
+				var RnArr = nString.split('').reverse();
+				// console.log("nArr " + nArr);
+				// console.log("RnArr " + RnArr);
+
+				nArr.forEach(function (e,i,array) {
+
+					if (e != RnArr[i]) {
+
+						console.log("I made it");
+						return iSfAncY = false;
+
+					}
+
+				})
+
+				return iSfAncY;
+
+			}
+
+		// 4 how many trailing 000s?
+		//
+
+			function Tz(n) {
+
+				var i = 1;
+				var FacT = 1;
+				
+				while(i <= n ){
+
+					FacT = FacT * i;
+
+					i++;
+
+					// console.log(FacT);
+					// console.log(i);
+				}
+
+				// console.log(i);
+
+				return FacT;
+
+			};
+
+			function cOUNt(n) {
+
+				
+				var nString = n.toString()
+				var count = 0;
+
+				while (nString.indexOf("0") != -1) {
+					
+					nString = nString.replace("0","a");
+					count++;
+
+				};
+
+				console.log(count);
+				return count;
+
+			}
+
+
+
+		</script>
+
+	</body>
+
+</html>
+

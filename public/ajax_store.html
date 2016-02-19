@@ -2,69 +2,101 @@
 <html>
 <head>
     <title>Online Store</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <style type="text/css">
+
+        h1{
+
+            text-align: center;
+            font-size: 2 em;
+        }
+        th{
+
+            text-align: center;
+            font-size: 1 em;
+        }
+
+
+    </style>
+
 </head>
 <body>
-
+<div class="container-fluid">
 <h1>My Tool Store</h1>
 
-<table id="products">
+<table id="products" class= "table table-striped">
     <thead>
-        <tr>
-            <th>Title</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Categories</th>
+        <tr class="row">
+            <th class= "col-md-3"><h2>Title</h2></th>
+            <th class= "col-md-3"><h2>Quantity</h2></th>
+            <th class= "col-md-3"><h2>Price</h2></th>
+            <th class= "col-md-3"><h2>Categories</h2></th>
         </tr>
     </thead>
     <tbody id="insertProducts"></tbody>
 </table>
 
+    <div class= "row">
+    <div class="col-md-5"></div>
+    <button class= "col-md-2" id="refresh">Update List</button>
+    <div class="col-md-5"></div>
+    </div>
+</div>
+
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <script>
 (function() {
-    
-    $.ajax({
+        
+    function getData() {
+        $.ajax({
 
-        "url" : "/data/inventory.json",
-        "type" : "GET"
-    }).done(function (data) {
+            "url" : "/data/inventory.json",
+            "type" : "GET"
+        }).done(function (data) {
 
-        console.log("shut up");
-        console.log(this);
-        console.log(data);
-        var neWrow = "";
-
-
-
-        $(data).each(function (i, e) {
+            console.log("shut up");
+            console.log(this);
+            console.log(data);
+            var neWrow = "";
 
 
-            
-            // neWrow[i].append("<th>" + data[i].title + "</th>");
-            // neWrow[i].append("<th>" + data[i].quantity + "</th>");
-            // neWrow[i].append("<th>" + data[i].price + "</th>");
-            // neWrow[i].append("<th>" + data[i].catagories[0] + "</th>");
 
-            console.log(data[i].price);
+            data.forEach(function (element, index, array) {
+                var tr = $("<tr class= \"row\">");
 
-            $("#insertProducts").append("test");
+                
+                tr.append("<th class= \"col-md-3\"><h3>" + element.title + "</h3></th>");
+                tr.append("<th class= \"col-md-3\"><h3>" + element.quantity + "</h3></th>");
+                tr.append("<th class= \"col-md-3\"><h3>" + element.price + "</h3></th>");
+                tr.append("<th class= \"col-md-3\"><h3>" + element.categories[0] + "</h3></th>");
 
-            console.log(neWrow);
-            
-            $("#insertProducts").append("<tr>" + neWrow[i] + "</tr>");
 
+                console.log(tr.html());
+                
+                // $("#insertProducts").append("<tr>" + neWrow[i] + "</tr>");
+                $("#insertProducts").append(tr);
+
+            })
+
+
+        }).fail(function (){
+
+            alert("error\!");
         })
 
+    };
 
-    });
+    $("#refresh").click(function () {
+
+        $("#insertProducts").html("")
+        getData();
+        console.log("page reload\!");
+    })
 
 
 
-    // TODO: Take the data from inventory.json and append it to the products table
-    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
-    //             its contents and fields
-    //       HINT: You will want to target #insertProducts for your new HTML elements
 })();
 </script>
 
