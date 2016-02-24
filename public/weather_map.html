@@ -25,6 +25,12 @@
 
 				border: solid gray 1px;
 			}
+			#map-canvas{
+
+				width: 770px;
+				height: 481px;
+			}
+
 		</style>
 
 	</head>
@@ -40,8 +46,9 @@
 				<div class="row">
 
 					<div class="col-md-1"></div>
-					<input type="text" placeholder="latitude (N+ S-)" id="lat" class="col-md-2">
-					<input type="text" placeholder="longitude (E+ W-)" id="lon" class="col-md-2">
+					<input type="text" placeholder="latitude (N+ S-)" id="lat" class="col-md-2" readonly>
+					<input type="text" placeholder="longitude (E+ W-)" id="lon" class="col-md-2" readonly>
+					<input type="text" placeholder="timezone" id="tZ" class="col-md-2">
 
 					<div class="col-md-2">
 						<select id="numOfDays">
@@ -73,32 +80,69 @@
 
 				<table id="weaTheeeer" class="table table-striped"></table>
 
+				<div id="map-canvas"></div>
+
 		</div>
 
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+ 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhdb0AkQQX3P_drCRbXr5zOUXXICFX45Q"></script>
+ 		
 		<script type="text/javascript">
-
-
 		"use strict"
 
+			$("#lat").val(29.4284595);
+			$("#lon").val(-98.492433);
+			var lat = $("#lat").val(); 
+			var lon = $("#lon").val(); 
+
+
+			lat = parseFloat(lat);
+			lon = parseFloat(lon);
 			
 			$("button").click(function () {
-
-				var lat = $("#lat").val(); 
-				var lon = $("#lon").val(); 
-				var numOfDays = $("#numOfDays").val();
-				var timeOfD = $("#timeOfD").val();
+				lat = $("#lat").val(); 
+				lon = $("#lon").val(); 
 
 				console.log(timeOfD);
 
-				gEt4(lat, lon, numOfDays, timeOfD);
+				gEt4(lat, lon);
 
 			});
 
-			function gEt4(lat, lon, numOfDays, timeOfD) {
+			function loopDays(data) {
+				var numOfDays = $("#numOfDays").val();
+				var timeOfD = $("#timeOfD").val();
+						
+
+				$("#loCal").text(data.city.name + ", " + data.city.country);
+
+				var tZshIft = parseInt($("#tZ").val());
+				var DshIft  = (data.cnt - 33) + parseInt(timeOfD) + tZshIft;
+				
+				var ShiFteeer = 0;
+
+
+				for (var i = 0; i < numOfDays; i++) {	
+
+					// // console.log(e);
+					console.log("in it to win it");
+
+					ShiFteeer = DshIft + (8*i);
+					console.log(ShiFteeer);
+					taBdata(data.list,ShiFteeer);
+
+				};	
+
+			};
+
+			function gEt4(lat, lon) {
 
 				$("#weaTheeeer").html("")
+				console.log("mememm lat "+lat)
 
+				console.log("memme lon "+lon)
+				
 				$.ajax({
 
 					url: "http://api.openweathermap.org/data/2.5/forecast",
@@ -114,33 +158,52 @@
 
 					}
 
-				}).done(function(data) {
+				}).done(function(weatherData) {
 					
 					
-					console.log(data);
+					console.log(weatherData);
 					// max number of days from API is 40
 					// min number of days from API is 33
-					// 8 data points for each day except the 1st
+					// 8 weatherData points for each day except the 1st
 
-					$("#loCal").text(data.city.name + ", " + data.city.country);
+					var UTs = weatherData.list[0].dt;
 
-					var DshIft  = 8 - (data.cnt - 32) + parseInt(timeOfD);
-					var ShiFteeer = 0;
 
-					console.log(DshIft);
+					// time zone call to goole api
 
-					for (var i = 0; i < numOfDays; i++) {	
+						
+						$.ajax({
 
-						// // console.log(e);
-						// console.log("in it to win it");
+							url: "https://maps.googleapis.com/maps/api/timezone/json",
+							
+							data: {
 
-						ShiFteeer = DshIft + (8*i);
-						console.log(ShiFteeer);
-						taBdata(data.list,ShiFteeer);
+								location: lat + "," + lon,
+								timestamp: "1331161200",
+								key: "AIzaSyDsGSDw6_-F7P_7EO-udpgBgJDxDdtxh90"
 
-					};
+							}
 
-					
+						}).done(function (timezoneData) {
+
+
+							console.log(timezoneData);
+							var localTZ = [];
+							localTZ[0] = UTs + timezoneData.rawOffset + timezoneData.dstOffset;
+							localTZ[1] = (timezoneData.rawOffset + timezoneData.dstOffset)/3600;
+
+							$("#tZ").val(localTZ[1])
+							console.log($("#tZ").val());
+
+							loopDays(weatherData);
+
+						}).fail(function (){
+
+							alert("i hate my life");
+						})
+
+							
+
 
 
 				}).fail(function () {
@@ -153,7 +216,12 @@
 
 			function dayOwk(dt) {
 
+				var tZ = $("#tZ").val();
+				tZ = tZ * 3600;
+				console.log(tZ);
 				var d = new Date(dt*1000);
+				var BtZ = d.getTimezoneOffset()*60;
+				d = new Date((dt + BtZ + tZ)*1000);
 				console.log(d);
 				var weekday = new Array(7);
 
@@ -169,21 +237,28 @@
 
 			}			
 
+
+			//yes I am really doing this...
+			//google api timezone key AIzaSyDsGSDw6_-F7P_7EO-udpgBgJDxDdtxh90
+
+
+
+
+
+
+
+
 			function taBdata(array, i){
 
 				
 
 				var wTh = [];
+				console.log(array[i].dt);
 				var DaY = dayOwk(array[i].dt);
-				console.log(DaY);
 
 				var hEad = $("<h2>").html(DaY).addClass("row col-md-12");
 				var nDIV = $("<div>").addClass("row " + i);
 				var iCon = array[i].weather[0].icon;
-
-				console.log(iCon);
-				// iCon = iCon.substring(0,2) + $("#timeOfD");
-				console.log(iCon);
 				
 				
 				wTh[0] = $("<h3>").html("Temperature\: " + array[i].main.temp.toFixed(0)+ " degF");
@@ -213,6 +288,43 @@
 
 				$("#weaTheeeer").append(hEad);
 			};
+
+			var mapOptions = {
+
+				zoom: 4,
+
+				center: {
+
+					lat: lat,
+					lng: lon
+				}
+			}
+
+			var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+			var marker = new google.maps.Marker({
+
+				position : {
+
+					lat: lat,
+					lng: lon
+				},
+				map: map,
+				draggable: true,
+				title: "Drag me!"
+			})
+
+			google.maps.event.addListener(marker, "dragend", function (event) {
+			    
+			    var mrkPos = []
+			    mrkPos[0] = this.position.lat();
+			    mrkPos[1] = this.position.lng();
+			  
+			    $("#lat").val(mrkPos[0]);
+			    $("#lon").val(mrkPos[1]);
+
+
+			}); //end addListener
 
 
 
