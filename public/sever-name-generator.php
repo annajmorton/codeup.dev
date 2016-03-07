@@ -15,6 +15,15 @@
 	}
 
 
+	function pageController() {
+
+		$gr8name['title'] = 'server name generator';
+		$gr8name['name'] = rando();
+		return $gr8name;
+	}
+
+	extract(pageController());
+
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +78,7 @@
 
 		<div class="callout"><h1>Here's a great new server name: </h1></div>
 		<br>
-		<div class="gr8name"><h1><?php echo rando();?></h1></div>
+		<div class="gr8name"><h1><?= $name; ?></h1></div>
 
 	</body>
 
