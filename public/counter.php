@@ -72,7 +72,6 @@
 				<a href="?counter=<?=$counter+1;?>">down</a>
 			</div>
 
-
 			<!-- up link -->
 			<div class="pageBox" id="uplink">
 				<a href="?counter=<?=$counter-1;?>">up</a>
