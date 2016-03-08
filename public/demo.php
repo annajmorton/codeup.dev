@@ -13,6 +13,14 @@
 
 	<body>
 		<?php $message = "i'm a little teapot";?>
+		<?php var_dump($_GET); ?>
+		
+
+		<form method="GET">
+		    <input type="text" name="q" value="" placeholder="Search DuckDuckGo">
+		    <button type="submit">Go!</button>
+		</form>
+
 
 		<h1>Here is your message Sam!</h1>
 		<br>

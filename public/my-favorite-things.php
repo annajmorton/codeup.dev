@@ -30,12 +30,25 @@
 				display: flex;
 				width: 1000px;
 				justify-content:center;
+				
+
+
+			}
+			#image{
+
+				display: flex;
+				width: 70%;
+				justify-content:center;
+				background-image: url("/img/fav/0-fav.jpg");
+				background-size: cover;
+				background-repeat: no-repeat;
 
 			}
 			table {
 
 				width: 70%;
 			}
+		
 
 
 
@@ -59,7 +72,9 @@
 		 	</tbody>
 
 	 	</table>
+	 	<div id="image"></div>
 
+	 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	 	<script type="text/javascript">
 	 		"use strict"
 
