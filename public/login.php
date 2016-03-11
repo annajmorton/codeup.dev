@@ -1,27 +1,60 @@
 <?php 
+	session_start();
+
+	require_once "functions.php";
+	require_once "../Input.php";
+	require_once "../Auth.php";
+
+	var_dump($_SESSION);
 	var_dump($_POST);
 
-	$username = 'guest';
-	$password = 'password';
-	$URL = "";
+	function againcrazy() {
 
+		$DEFusername = 'guest';
+		$DEFpassword = 'password';
+		$username = '';
+		$password = '';
+		$test = "thishere";
+		var_dump($test);
 
-	if (isset($_POST['username']) && isset($_POST['password'])) {
-		
-		if ($_POST['username'] == $username && $_POST['password'] == $password) {
+		Auth::attempt($username, $password);
+
+		if (Input::has('username') && Input::has('password')) {
+
+			var_dump($test);
+			$username = Input::get('username');
+			$password = Input::get('password');
 			
-			
-			header('Location: http://codeup.dev/authorized.php');
-			exit;
-			touch('scrip-is-still-running.txt');
+			if (Auth::attempt($username, $password)) {
+				
+				header('Location: http://codeup.dev/authorized.php');
+				exit;
+				
+			} else if (Input::get('username')=='' && Input::get('password')=='' ) {
 
-		} else {
+				echo "please enter a username and password";
 
-			$URL = "";
-			echo "that is not the correct username or password";
-		}
+			} else {
+
+				echo "that is not the correct username or password";
+			}
+
+		} 
+
+		// if (isset($_SESSION['logged_in_user']) && $_SESSION['logged_in_user']) {
+
+		// 		header('Location: http://codeup.dev/authorized.php');
+		// 		exit;
+		// }
+
+
+		$passme = ['password' => $password,'username' => $username];
+
+		return $passme;
+
 	}
 
+	extract(againcrazy());
 ?>
 
 <!DOCTYPE html>
@@ -45,10 +78,10 @@
 	<form method="POST">
 	
 		<label for="username">username</label>
-		<input id="username" name="username">
+		<input id="username" name="username" value="<?=escape($username);?>">
 
 		<label for="password">password</label>
-		<input id="password" name="password">
+		<input id="password" name="password" value="<?=escape($password);?>">
 
 		<input type="submit">
 

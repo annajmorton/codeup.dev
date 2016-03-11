@@ -1,4 +1,18 @@
+<?php 
+	
+	include_once	"../Auth.php";
 
+	session_start();
+
+		
+	if (Auth::check()) {
+		
+		header('Location: http://codeup.dev/login.php');
+		exit;
+
+	} 
+
+?>
 <!DOCTYPE html>
 
 <html>
@@ -15,7 +29,12 @@
 
 	<body>
 
-		<h1>Authorized</h1>
+		<h1>Authorized <?= Auth::user(); ?></h1>
+		
+
+		<form method="POST" action='http://codeup.dev/logout.php'>
+			<input type="submit" value="Logout">
+		</form>
 
 	</body>
 

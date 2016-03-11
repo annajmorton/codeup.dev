@@ -1,0 +1,31 @@
+
+2016-03-11 16:43:23 [INFO] test this message
+2016-03-11 16:47:41 [INFO] the user is logged in
+2016-03-11 16:49:55 [INFO] the user is logged in
+2016-03-11 16:52:25 [ERROR] login failed
+2016-03-11 16:52:32 [ERROR] login failed
+2016-03-11 16:52:32 [INFO] the user is logged in
+2016-03-11 16:52:44 [ERROR] login failed
+2016-03-11 16:52:50 [ERROR] login failed
+2016-03-11 16:52:50 [ERROR] login failed
+2016-03-11 16:54:36 [ERROR] login failed
+2016-03-11 16:54:36 [ERROR] analogin failed
+2016-03-11 16:54:45 [ERROR] login failed
+2016-03-11 16:54:52 [ERROR] login failed
+2016-03-11 16:54:52 [ERROR] annalogin failed
+2016-03-11 17:00:37 [ERROR]  login failed
+2016-03-11 17:00:48 [ERROR]  login failed
+2016-03-11 17:00:54 [ERROR]  login failed
+2016-03-11 17:00:54 [INFO] guest is logged in
+2016-03-11 17:16:19 [ERROR]  login failed
+2016-03-11 17:16:26 [ERROR]  login failed
+2016-03-11 17:16:26 [INFO] guest is logged in
+2016-03-11 17:16:33 [ERROR]  login failed
+2016-03-11 17:16:33 [ERROR]  login failed
+2016-03-11 17:16:39 [ERROR]  login failed
+2016-03-11 17:16:39 [ERROR] test login failed
+2016-03-11 17:16:54 [ERROR]  login failed
+2016-03-11 17:16:54 [INFO] guest is logged in
+2016-03-11 17:19:37 [ERROR]  login failed
+2016-03-11 17:19:44 [ERROR]  login failed
+2016-03-11 17:19:45 [INFO] guest is logged in
