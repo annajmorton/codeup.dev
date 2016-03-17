@@ -1,0 +1,14 @@
+#cake{
+	
+	width:500px;
+}
+.hidden{
+
+	visibility: hidden;
+}
+
+h2 {
+
+	margin-top:0.2em; 	
+	margin-bottom:0;
+}

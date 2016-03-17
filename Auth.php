@@ -4,10 +4,25 @@ include_once "Log.php";
 class Auth 
 {
 	
-	 public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
+	 public static $password;
 	 public static $username = 'guest';
+	
+	 public static function getPassword() 
+	 {
+	 	$filename = '../logdata/password.csv';
+	 	$handle = fopen($filename,'r');
+	 	self::$password = fread($handle, filesize($filename));
+	 	fclose($handle);
+	 	self::$password = trim(self::$password);
+	 	
+	 }
+
+
+
 	 public static function attempt($username, $password) 
 	 {
+	 	self::getPassword();
+
 	 	if ($username == self::$username && password_verify($password, self::$password)) {
 			
 			var_dump("i'm called");
@@ -57,3 +72,5 @@ class Auth
 	    session_regenerate_id(true);
 	 }
 }
+
+Auth::getPassword();

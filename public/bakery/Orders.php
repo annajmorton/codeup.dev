@@ -11,24 +11,23 @@ class Orders
 
 		$this->customer_name = $customer_name;
 		$this->cake_type = $cake_type;
-		$this->cake_spec = $cake_spec;
-		
-		
+		$this->cake_spec = $cake_spec;	
 	}
 
 
 	public function cost() 
 	{
+		$cake = $this->cake_spec;
 		$cost = 30;
 
-		if (isset($cake_spec->decor_message)) {
+		if (true) {
 			
-			$cost += count($cake_spec->decor_message);
+			$cost += strlen($cake->decor_message);
 			$this->cost = $cost;
 
 		} else {
 
-			return "please specify cake decoration message";
+			$this->cost = "please specify cake decoration message";
 		}
 
 

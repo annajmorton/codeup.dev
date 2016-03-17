@@ -5,6 +5,7 @@ class Employees
 	private $lastname;
 	private $start_date;
 	private $salary;
+	public static $employee_list=[];
 
 	public function __construct($firstname,$lastname, $start_date, $salary)
 	{
@@ -12,6 +13,7 @@ class Employees
 		$this->lastname = $lastname;
 		$this->start_date = $start_date;
 		$this->salary = $salary;
+		self::$employee_list[] = $firstname;
 	}
 
 	public function employeeInfo() 
@@ -35,10 +37,19 @@ class Employees
 			return "the employee does not have a valid start date";
 		}
 	} 
+
+	public static function selectEmployee() 
+	{
+		$empString = '';
+
+		foreach (self::$employee_list as $firstname) {
+			
+			$empString .= "<option value='" . $firstname . "'>" . $firstname . "</option>";
+		}
+
+		return $empString;
+	}
 }
-
-
-
 
 
 

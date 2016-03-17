@@ -5,8 +5,6 @@
 	require_once "../Input.php";
 	require_once "../Auth.php";
 
-	var_dump($_SESSION);
-	var_dump($_POST);
 
 	function againcrazy() {
 
@@ -14,8 +12,6 @@
 		$DEFpassword = 'password';
 		$username = '';
 		$password = '';
-		$test = "thishere";
-		var_dump($test);
 
 		Auth::attempt($username, $password);
 

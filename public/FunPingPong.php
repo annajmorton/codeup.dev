@@ -3,8 +3,6 @@
 function FunPingPong () {
 
 
-	extract($_REQUEST);
-
 	if (Input::has('count')) {
 		
 		$count = Input::get('count');
