@@ -1,38 +1,43 @@
 "use strict";
 
-function turnOff(var) {
+function show($div) {
 
-
+	$($div).hasClass('hidden') ? $($div).removeClass('hidden') : "";
 }
 
-function turnOn($div) {
+function hide($div) {
 
-	$
+	$($div).hasClass('hidden') ? "" : $($div).addClass('hidden');
 
 }
 
 if ($('#action').val() == 'home') {
-	// $('#home_page').toggleClass('hidden');
-	$('#employee_select').toggleClass('hidden');
-	$('#employee_info').toggleClass('hidden');
-	$('#cake_select').toggleClass('hidden');
-	$('#order_summary').toggleClass('hidden');
+	
+	
+	show('#home_page');
+	hide('#employee_select');
+	hide('#employee_info');
+	hide('#cake_select');
+	hide('#order_summary');
+
 };
 
 if ($('#action').val() == 'cake_order') {
-	$('#home_page').toggleClass('hidden');
-	$('#employee_select').toggleClass('hidden');
-	$('#employee_info').toggleClass('hidden');
-	$('#cake_select').toggleClass('hidden');
-	$('#order_summary').toggleClass('hidden');
+
+	hide('#home_page');
+	hide('#employee_select');
+	hide('#employee_info');
+	show('#cake_select');
+	show('#order_summary');
 };
 
 if ($('#action').val() == 'emp_lookup') {
-	$('#home_page').toggleClass('hidden');
-	$('#employee_select').toggleClass('hidden');
-	$('#employee_info').toggleClass('hidden');
-	$('#cake_select').toggleClass('hidden');
-	$('#order_summary').toggleClass('hidden');
+
+	hide('#home_page');
+	show('#employee_select');
+	show('#employee_info');
+	hide('#cake_select');
+	hide('#order_summary');
 };
 
 

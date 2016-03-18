@@ -2,7 +2,7 @@
 
 function pickAnAction() {
 
-	$action = 'stay';
+	$action = 'home';
 
 	if (isset($_GET['action'])) {
 		
@@ -12,6 +12,9 @@ function pickAnAction() {
 	$pass = [
 
 		'action' => $action
+		'current_employee' => $current_employee,
+		'employee_info' => $employee_info,
+		'emp_obj' => $emp_obj
 	];
 
 	return $pass;
@@ -22,6 +25,7 @@ function pickAnAction() {
 function employeeMake()
 {
 
+	
 	$filename = "Employees.csv";
 	$handle = fopen($filename, "r");
 	$data = fread($handle,filesize($filename));
@@ -40,6 +44,8 @@ function employeeMake()
 
 	if (isset($_GET['current_employee'])) {
 		
+		$action = 'emp_lookup';
+		$pass = ['action' => $action];
 		$current_employee = $_GET['current_employee'];
 		$employee_info = '';
 		
@@ -54,7 +60,7 @@ function employeeMake()
 		$employee_info = '';
 	}
 
-	$pass = [
+	$pass[] = [
 
 		'current_employee' => $current_employee,
 		'employee_info' => $employee_info,
@@ -67,6 +73,7 @@ function employeeMake()
 
 function cakemake() 
 {
+	
 	$cake = new Cakes();
 	$wedding = new Orders('hogs','chocolate', $cake);
 	
@@ -75,6 +82,8 @@ function cakemake()
 
 	if (isset($_GET['decor_message'])) {
 		
+		$action = 'cake_order';
+		$pass = ['action' => $action];
 		$cake->decor_message = $_GET['decor_message'];
 		$wedding->cost();
 
@@ -85,7 +94,7 @@ function cakemake()
 	}
 
 
-	$pass = [
+	$pass[] = [
 
 		'cake' => $cake,
 		'wedding' => $wedding

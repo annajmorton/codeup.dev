@@ -4,11 +4,13 @@
 /*ALL DISPLAYED PAGE ITEMS SHOULD BE INSIDE THIS ID TO FLEX IT*/
 #pageBuckett{
 
-	margin-top: 7rem;
+	padding-top: 7rem;
 
 	display: flex;
-	justify-content:center;
+	justify-content:space-around;
+	align-content:space-around;
 	flex-wrap:wrap;
+
 	/*define site font family here...*/
 	/*font-family: */
 }
@@ -24,9 +26,6 @@
 
 
 /*STANDARD ITEMS FOR A WEBSITE*/
-#AMheader{
-	
-}
 
 #AMnavBar{
 
@@ -42,7 +41,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	/*align-items: center;*/
-	background-color: pink;
+	background-color: #334d00;
 }
 
 #site_title,h2 {
@@ -50,8 +49,27 @@
 	width: 100%;
 	margin-top: 0;
 	margin-bottom: 0;
+	color: #ccff66;
+}
+#AMnavBar input {
+
+	text-align: center;
+	width: 10em;
+	background-color: #ccff66;
+	border-color:#ccff66;
+}
+#AMnavBar button {
+
+	background-color: #ccff66;
+	border: none;
 }
 
+#hat img {
+
+	width:20%;
+	height: 20%;
+	
+}
 
 #AMfooter{
 
@@ -63,12 +81,27 @@
 
 	/*add style*/
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	background-color: pink;
+	background-color: #334d00;
+	color: #ccff66;
 
 	/*add style*/
 }
 
 /*PAGE SPECIFIC FILES SHOULD BE IN DEDICATED SYTLE FILE*/
 
+body {
+
+	background-color: #e6ffb3;
+	font-family: 'EB Garamond', serif;
+
+}
+.park_details h4 {
+	margin-top: 0;
+	margin-bottom: 0.25em;
+}
+
+.parks {
+	padding-left:1%; 
+	padding-right:1%;
+}
