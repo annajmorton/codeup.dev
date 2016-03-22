@@ -2,6 +2,7 @@
 
 function offSet($pcount, $total_pages) {
 
+	
 	if (isset($_GET['page_prev'])) {
 		
 		$offset = $_GET['page_prev'];
@@ -21,6 +22,15 @@ function offSet($pcount, $total_pages) {
 		}
 
 
+	} else if (isset($_GET['page_select'])) {
+
+		$offset = $_GET['page_select'];
+
+
+	} else if (isset($_GET['edit_parkdb'])||isset($_GET['add_park'])) {
+
+		$offset = $total_pages + 1;
+
 	} else {
 
 		$offset = 0;
@@ -29,6 +39,19 @@ function offSet($pcount, $total_pages) {
 
 	return $offset;
 	
+}
+
+function addPark() {
+
+	if (isset($_GET['edit_parkdb'])) {
+
+		return true;
+
+	} else {
+
+		false;
+	}
+
 }
 
 

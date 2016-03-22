@@ -19,6 +19,12 @@ $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 extract(pageVariables($connection));
 
+$add_park = "class='hidden'";
+if ($edit_parkdb) {
+	
+	$add_park = '';
+}
+
 // $in_name = "";
 // $in_location = "";
 // $in_date_est = "";
@@ -54,17 +60,19 @@ extract(pageVariables($connection));
 
 			<div class="flex">
 
-				<form method="GET">
+				<div id="add_park" <?= $add_park ?>>
+					<form method="GET">
 
-					<input name="in_name" value="<?=$in_name;?>" default="name" placeholder="park name">
-					<input name="in_location" value="<?=$in_location;?>" placeholder="location">
-					<input name="in_date_est" value="<?=$in_date_est;?>" placeholder="date established">
-					<input name="in_area" value="<?=$in_area;?>" placeholder="park area in acres">
-					<input name="in_description" value="<?=$in_description;?>" placeholder="description of the park">
+						<input name="in_name" value="<?=$in_name;?>" default="name" placeholder="park name">
+						<input name="in_location" value="<?=$in_location;?>" placeholder="location">
+						<input name="in_date_est" value="<?=$in_date_est;?>" placeholder="date established">
+						<input name="in_area" value="<?=$in_area;?>" placeholder="park area in acres">
+						<input name="in_description" value="<?=$in_description;?>" placeholder="description of the park">
 
-					<button>submit</button>
+						<input type="submit" name="edit_parkdb" value="add park">
 
-				</form>
+					</form>
+				</div>
 
 			</div>			
 
@@ -92,6 +100,9 @@ extract(pageVariables($connection));
 		</div>
 		
 		<?php include_once "parksFooter.html"; ?>		
+
+
+		</script>
 
 	</body>
 
