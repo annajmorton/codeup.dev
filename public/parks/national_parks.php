@@ -3,6 +3,7 @@
 require_once '../../parks/password.php';
 require_once '../../db_connect.php';
 require_once 'offset.php';
+require_once '../../parks/PInput.php';
 
 $stmt = $connection->query('SELECT * FROM national_parks;');
 $pcount = $stmt->rowCount();
@@ -15,6 +16,14 @@ $sql_offset = $offset*4;
 
 $stmt = $connection->query('SELECT * FROM national_parks LIMIT 4 OFFSET '. $sql_offset . ';');
 $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+extract(pageVariables($connection));
+
+// $in_name = "";
+// $in_location = "";
+// $in_date_est = "";
+// $in_area = "";
+// $in_description = "";
 
 ?>
 
@@ -45,6 +54,24 @@ $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 			<div class="flex">
 
+				<form method="GET">
+
+					<input name="in_name" value="<?=$in_name;?>" default="name" placeholder="park name">
+					<input name="in_location" value="<?=$in_location;?>" placeholder="location">
+					<input name="in_date_est" value="<?=$in_date_est;?>" placeholder="date established">
+					<input name="in_area" value="<?=$in_area;?>" placeholder="park area in acres">
+					<input name="in_description" value="<?=$in_description;?>" placeholder="description of the park">
+
+					<button>submit</button>
+
+				</form>
+
+			</div>			
+
+
+
+			<div class="flex">
+
 				<?php foreach ($parks as $key => $park): ?>
 					<div class="parks">
 						<h3><?= $park['name'];?></h3>
@@ -52,6 +79,7 @@ $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 							<h4>location: <?= $park['location'];?></h4>
 							<h4>date established: <?= $park['date_established'];?></h4>
 							<h4>park area (acres): <?= $park['area_in_acres'];?></h4>
+							<h8>description: <?= $park['description'];?></h8>
 						</div>
 					</div>
 

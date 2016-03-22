@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 include_once "Employees.php";
 include_once "Cakes.php";
@@ -8,7 +9,7 @@ include_once "bakeryFunctions.php";
 Cakes::$frosting_color_opt = ['white','cream','baby blue','pink','hot pink'];
 Cakes::$cake_flavor_opt = ['chocolate','vanilla','carrot','italian cream','red velvet'];
 
-extract(pickAnAction());
+$action = pickAnAction();
 extract(employeeMake());
 extract(cakemake());
 

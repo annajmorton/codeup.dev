@@ -2,22 +2,22 @@
 
 function pickAnAction() {
 
-	$action = 'home';
 
 	if (isset($_GET['action'])) {
 		
 		$action = $_GET['action'];
+
+		$_SESSION['action'] = $action; 
+	} else if (isset($_SESSION['action'])) {
+
+		$action = $_SESSION['action'];
+	} else {
+
+		$action = 'home';
+
 	}
 
-	$pass = [
-
-		'action' => $action
-		'current_employee' => $current_employee,
-		'employee_info' => $employee_info,
-		'emp_obj' => $emp_obj
-	];
-
-	return $pass;
+	return $action;
 
 }
 
@@ -59,6 +59,7 @@ function employeeMake()
 		$current_employee = "none";
 		$employee_info = '';
 	}
+
 
 	$pass[] = [
 
@@ -103,3 +104,4 @@ function cakemake()
 	return $pass;
 }
 
+employeeMake();

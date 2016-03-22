@@ -18,6 +18,7 @@ $query = <<<PARKS
 		location VARCHAR(50) NOT NULL,
 		date_established DATE,
 		area_in_acres DOUBLE(10,2) UNSIGNED,
+		description VARCHAR(1000),
 		PRIMARY KEY (id)
 	);
 

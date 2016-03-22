@@ -32,6 +32,13 @@ class Input
         }
     }
 
+    public static function escape($input){
+
+        
+        $outString = htmlspecialchars(strip_tags($input));
+        return $outString;
+    }
+
     ///////////////////////////////////////////////////////////////////////////
     //                      DO NOT EDIT ANYTHING BELOW!!                     //
     // The Input class should not ever be instantiated, so we prevent the    //

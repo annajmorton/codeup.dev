@@ -5,7 +5,6 @@ $parks = file_get_contents($filename);
 // var_dump($parks);
 
 $parks = explode("\n", $parks);
-// var_dump($parks);
 
 foreach ($parks as $key => &$park) {
 	
@@ -29,6 +28,7 @@ foreach ($parks as $key => &$park) {
 	$temp[4] = explode(" ", $temp[4]);
 	$temp[4] = str_replace(',', "", $temp[4][0]);
 	$park['area_in_acres'] = $temp[4];
+	$park['description'] = $temp[6];
 
 }
 
