@@ -32,12 +32,55 @@ class Input
         }
     }
 
-    public static function escape($input){
-
+    public static function escape($value)
+    {
         
-        $outString = htmlspecialchars(strip_tags($input));
+        $outString = htmlspecialchars(strip_tags($value));
         return $outString;
     }
+
+    public static function getWordName($key)
+    {
+       // this function is silly - why do we need it?
+
+        $input = self::get($key);
+
+        if (is_numeric($input)||is_null($input)||is_array($input)) {
+            
+            throw new Exception("$input is not an alphanumeric word or name");
+        }
+
+        return $input;
+    }
+
+    public static function getnumber($key)
+    {
+        $input = self::get($key);
+      
+        if (!is_numeric($input)||empty($input)||is_array($input)) {
+            
+            throw new Exception("$input is not a number");
+        }
+
+        return $input;
+    }
+
+    public static function getdate($key)
+    {
+        $input = self::get($key);
+        
+        $bigdate = date_create($input); 
+
+
+        if (!$bigdate||empty($input)) {
+                
+            throw new Exception("$input is not in a valid date format");
+        }
+
+
+        return $bigdate;
+    }
+
 
     ///////////////////////////////////////////////////////////////////////////
     //                      DO NOT EDIT ANYTHING BELOW!!                     //
@@ -45,5 +88,8 @@ class Input
     // constructor method from being called. We will be covering private     //
     // later in the curriculum.                                              //
     ///////////////////////////////////////////////////////////////////////////
+    
     private function __construct() {}
 }
+
+

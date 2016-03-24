@@ -44,8 +44,6 @@ function employeeMake()
 
 	if (isset($_GET['current_employee'])) {
 		
-		$action = 'emp_lookup';
-		$pass = ['action' => $action];
 		$current_employee = $_GET['current_employee'];
 		$employee_info = '';
 		
@@ -61,7 +59,7 @@ function employeeMake()
 	}
 
 
-	$pass[] = [
+	$pass = [
 
 		'current_employee' => $current_employee,
 		'employee_info' => $employee_info,
@@ -83,8 +81,6 @@ function cakemake()
 
 	if (isset($_GET['decor_message'])) {
 		
-		$action = 'cake_order';
-		$pass = ['action' => $action];
 		$cake->decor_message = $_GET['decor_message'];
 		$wedding->cost();
 
@@ -95,7 +91,7 @@ function cakemake()
 	}
 
 
-	$pass[] = [
+	$pass = [
 
 		'cake' => $cake,
 		'wedding' => $wedding
@@ -103,5 +99,3 @@ function cakemake()
 
 	return $pass;
 }
-
-employeeMake();

@@ -1,18 +1,19 @@
 <?php 
 
-include_once '../../Input.php';
-
 class PInput
 {
 	public $value;
 	public $key;
 	public $isSet = false;
 	public $isDate;
+	public $isNumber;
+	public $exMessage;
 
-	public function __construct($keystring, $datecheck = false) 
+	public function __construct($keystring, $datecheck = false, $numcheck = false) 
 	{
 		$this->key = $keystring;
 		$this->isDate = $datecheck;	
+		$this->isNumber = $numcheck;
 		$this->value = Input::has($this->key) ? $this->setInput() :'';	
 	}
 
@@ -20,25 +21,37 @@ class PInput
 
 		$input = Input::escape(Input::get($this->key));
 		
-		if ($input!='') {	
+		if (!empty($input)) {
 			
-			if ($this->isDate) {
-				
-				$date = strtotime($input); 
+			try{
 
-				if ($date!=false) {
+				if ($this->isDate) 
+				{	
+					$input = Input::getdate($this->key);
+					// var_dump($input);
+					// $input = $input->date;
 					
-					$input = date("Y-m-d",$date);
-					$this->isSet = true;
-				}
-			
-			} else {
 
-				$this->isSet = true;	
+				} else if ($this->isNumber) {	
+
+					$input = Input::escape(Input::getnumber($this->key));
+
+				} else {
+
+					$input = Input::escape(Input::getWordName($this->key));
+
+				} 
+
+				$this->isSet = true;
+
+			} catch (Exception $e) {
+				
+				$this->isSet = false;
+				$this->exMessage = $e->getMessage();
 			}
-
+			
 		}
-
+	
 		return $input;
 
 	}
@@ -51,8 +64,17 @@ function pageVariables($connection) {
 	$in_name = new PInput('in_name'); 
 	$in_location = new PInput('in_location');
 	$in_date_est = new PInput('in_date_est', true);
-	$in_area = new PInput('in_area');
+	$in_area = new PInput('in_area',false ,true);
 	$in_description = new PInput('in_description');
+	$exMessage = [
+
+		'name' => $in_name->exMessage,
+		'location' => $in_location->exMessage,
+		'date_established' => $in_date_est->exMessage,
+		'area' => $in_area->exMessage,
+		'description' => $in_description->exMessage
+
+	];
 	$edit_parkdb = new PInput('edit_parkdb');
 
 
@@ -63,13 +85,23 @@ function pageVariables($connection) {
 		'in_date_est' => $in_date_est->value,
 		'in_area' => $in_area->value,
 		'in_description' => $in_description->value,
+		'exMessage' => $exMessage,
 		'edit_parkdb' => $edit_parkdb->isSet
 
 	];
 
+	// var_dump($in_date_est);
+	// var_dump($pass);
+
 	if ($in_name->isSet&&$in_location->isSet&&$in_date_est->isSet&&$in_area->isSet&&$in_description->isSet) {
 		
 		insertPark($pass, $connection);
+		
+		$pass['in_name'] = '';
+		$pass['in_location'] = '';
+		$pass['in_date_est'] = '';
+		$pass['in_area'] = '';
+		$pass['in_description'] = '';
 	}
 
 	return $pass;
@@ -83,7 +115,7 @@ function insertPark($pass, $connection) {
 
 	$stmt->bindValue(':name',$pass['in_name'],PDO::PARAM_STR);
 	$stmt->bindValue(':location',$pass['in_location'],PDO::PARAM_STR);
-	$stmt->bindValue(':date_established',$pass['in_date_est'],PDO::PARAM_STR);
+	$stmt->bindValue(':date_established',$pass['in_date_est']->format('Y-m-d'),PDO::PARAM_STR);
 	$stmt->bindValue(':area_in_acres',$pass['in_area'],PDO::PARAM_STR);
 	$stmt->bindValue(':description',$pass['in_description'],PDO::PARAM_STR);
 

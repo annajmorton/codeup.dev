@@ -3,6 +3,7 @@
 require_once '../../parks/password.php';
 require_once '../../db_connect.php';
 require_once 'offset.php';
+require_once '../../Input.php';
 require_once '../../parks/PInput.php';
 
 $stmt = $connection->query('SELECT * FROM national_parks;');
@@ -25,11 +26,12 @@ if ($edit_parkdb) {
 	$add_park = '';
 }
 
-// $in_name = "";
-// $in_location = "";
-// $in_date_est = "";
-// $in_area = "";
-// $in_description = "";
+// $exception_show = "class='hidden'";
+// if (is_null($exMessage)==false) {
+
+// 	$exception_show = '';	
+// }
+
 
 ?>
 
@@ -58,9 +60,26 @@ if ($edit_parkdb) {
 			<!-- TO PUT ITMES IN STND FLEX BOX, ADD FLEX CLASS -->
 			<div id="hat" class="flex"><img src="HH_Park_ranger_hat.png" alt="ranger hat"></div>
 
+			
+			<!-- <div <?= $exception_show; ?>> -->
+				<div class="flex">
+
+					<?php foreach ($exMessage as $key => $exception): ?>
+							
+						<?php if (empty($exception)==false): ?>
+							<?= "<h3>" . $key . " input has the following issue: " . $exception . "</h3>" ?>
+						<?php endif; ?>
+			
+					<?php endforeach; ?>
+
+				</div>
+			<!-- </div> -->
+
+
+
 			<div class="flex">
 
-				<div id="add_park" <?= $add_park ?>>
+				<div id="add_park" <?= $add_park; ?>>
 					<form method="GET">
 
 						<input name="in_name" value="<?=$in_name;?>" default="name" placeholder="park name">
