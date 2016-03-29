@@ -22,8 +22,21 @@
 
 				align-self: center;
 			}
+			.actionB {
 
+				display: flex;
+				justify-content:space-between;
+				width:8em;
+			}
+/*
+			input:invalid {
+			  border: 1px solid red;
+			}
 
+			input:valid {
+			  border: 1px solid green;
+			}
+*/
 
 		</style>
 
@@ -47,8 +60,9 @@
 
 			</div>
 
+
 			<!-- table -->
-			<table class="table table-striped">
+			<table id="tlist" class="table table-striped">
 				<tr>
 					<th>Name</th>
 					<th>Email</th>
@@ -56,34 +70,35 @@
 					<th>Actions</th>
 				</tr>
 
+				
 			</table>
 
 
 			<h1>Add Contact</h1>
 
 			<!-- form -->
-			<form>
+			<form id="new_contact">
 
 				<div class="form-group">
 
 					 <div class="form-group">
 						<label for="name">Name</label>
-						<input class="form-control" id="name">
+						<input class="form-control" id="name" class="formHintBubble" required>
 					</div>
 
 					 <div class="form-group">
 						<label for="email">Email Address</label>
-						<input class="form-control" id="email">
+						<input type="email" class="form-control" id="email" required>
 					</div>
 
 					 <div class="form-group">
 						<label for="phone">Phone Number</label>
-						<input class="form-control" id="phone">
+						<input class="form-control" id="phone" required>
 					</div>
 
 					 <div class="form-group">
-						<button class="btn btn-default">clear</button>
-						<button class="btn btn-success">add contact</button>
+						<button id="clear" class="btn btn-default">clear</button>
+						<button id="addy" class="btn btn-success">add contact</button>
 					</div>
 
 				</div>
@@ -95,8 +110,81 @@
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript">
 			"use strict"
+			var rcount = 0;
+		// function validInput(input){
 
+		// 	var isValid = true;
+			
+		// 	if (input == null) {
+
+		// 		console.log("please enter a value");
+		// 		isValid = false;
+			
+
+		// 	} else if () {
+
+		// 		console.log("not a valid email address");
+		// 		isValid = false;
+		// 	}
+
+		// 	return isValid;
+
+		// }
+
+		$('#addy').on('click', function(event) {
+
+			
+			event.preventDefault();
+			
+
+			var name = $('#name').val();
+			var email = $('#email').val();
+			var phone = $('#phone').val();
+
+			if (!isname) {
+
+				document.getElementById('name').valid
+			};
+
+			
+			var isname = document.getElementById('name').validity.valid;
+			var isemail = document.getElementById('email').validity.valid;
+			var isphone = document.getElementById('phone').validity.valid;
+
+			if (isname && isemail && isphone) {
+
+				var action = '<div class="actionB"><button type="button" class="edit btn btn-default btn-sm">Edit</button><button type="button" class="remove btn btn-danger btn-sm">Remove</button></div>';
+				rcount++;
+
+				var inhtml ='<tr class="inrow"><td>' + name + '</td><td>' + email + '</td><td>' + phone + '</td>' + '</td><td>' + action + '</td></tr>';
+				$('#tlist').append(inhtml);
+			}
+
+		});
+
+		$('#clear').on('click', function(event) {
+			
+			event.preventDefault();
+
+			$('#name').val("");
+			$('#email').val("");
+			$('#phone').val("");
+
+
+
+		});
+
+		$('button').on('click', function(event) {
+
+			event.preventDefault();
+			console.log('this works');
+
+			console.log($(this).parents('tr').html(''));
+
+		});
+		
 			// class for red button class="btn btn-danger"
+			// :contains(text) - to search?
 
 
 		</script>
