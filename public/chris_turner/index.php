@@ -28,15 +28,6 @@
 				justify-content:space-between;
 				width:8em;
 			}
-/*
-			input:invalid {
-			  border: 1px solid red;
-			}
-
-			input:valid {
-			  border: 1px solid green;
-			}
-*/
 
 		</style>
 
@@ -77,7 +68,7 @@
 			<h1>Add Contact</h1>
 
 			<!-- form -->
-			<form id="new_contact">
+			<form id="new_contact" onsubmit="return false">
 
 				<div class="form-group">
 
@@ -97,95 +88,144 @@
 					</div>
 
 					 <div class="form-group">
-						<button id="clear" class="btn btn-default">clear</button>
-						<button id="addy" class="btn btn-success">add contact</button>
+						<input id="clear" type="reset" value="clear" class="btn btn-default">
+						<button id="addy" type="submit" class="btn btn-success">add contact</button>
 					</div>
 
 				</div>
 
 			</form>
 
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Edit Contact</h4>
+			      </div>
+			      <div class="modal-body">
+			       <div class="form-group">
+						<label for="name">Name</label>
+						<input class="form-control" id="mname" class="formHintBubble" required>
+					</div>
+					<div class="form-group">
+						<label for="email">Email Address</label>
+						<input type="email" class="form-control" id="memail" required>
+					</div>
+					<div class="form-group">
+						<label for="phone">Phone Number</label>
+						<input class="form-control" id="mphone" required>
+					</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			        <button type="button" class="btn btn-primary" id="save">Save changes</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
 		</div>
 
+
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 			"use strict"
-			var rcount = 0;
-		// function validInput(input){
+			var rcount = '';
 
-		// 	var isValid = true;
-			
-		// 	if (input == null) {
+			// inserts contact into contact manager - used in modal and add contact
+			function insert(sname, semail, sphone){
 
-		// 		console.log("please enter a value");
-		// 		isValid = false;
-			
+				var name = $('#'+ sname).val();
+				var email = $('#' + semail).val();
+				var phone = $('#' + sphone).val();
 
-		// 	} else if () {
+				
+				var isname = document.getElementById(sname).validity.valid;
+				var isemail = document.getElementById(semail).validity.valid;
+				var isphone = document.getElementById(sphone).validity.valid;
 
-		// 		console.log("not a valid email address");
-		// 		isValid = false;
-		// 	}
+				if (isname && isemail && isphone) {
 
-		// 	return isValid;
+					var action = '<div class="actionB"><button type="button" class="edit btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Edit</button><button type="button" class="remove btn btn-danger btn-sm">Remove</button></div>';
+					rcount++;
 
-		// }
-
-		$('#addy').on('click', function(event) {
-
-			
-			event.preventDefault();
-			
-
-			var name = $('#name').val();
-			var email = $('#email').val();
-			var phone = $('#phone').val();
-
-			if (!isname) {
-
-				document.getElementById('name').valid
-			};
-
-			
-			var isname = document.getElementById('name').validity.valid;
-			var isemail = document.getElementById('email').validity.valid;
-			var isphone = document.getElementById('phone').validity.valid;
-
-			if (isname && isemail && isphone) {
-
-				var action = '<div class="actionB"><button type="button" class="edit btn btn-default btn-sm">Edit</button><button type="button" class="remove btn btn-danger btn-sm">Remove</button></div>';
-				rcount++;
-
-				var inhtml ='<tr class="inrow"><td>' + name + '</td><td>' + email + '</td><td>' + phone + '</td>' + '</td><td>' + action + '</td></tr>';
-				$('#tlist').append(inhtml);
+					var inhtml ='<tr class="inrow"><td>' + name + '</td><td>' + email + '</td><td>' + phone + '</td>' + '</td><td>' + action + '</td></tr>';
+					$('#tlist').append(inhtml);
+				}
 			}
 
-		});
+			// add contact button
+			$('#addy').on('click', function(event) {
 
-		$('#clear').on('click', function(event) {
+				insert('name','email','phone');
 			
-			event.preventDefault();
+			});  
 
-			$('#name').val("");
-			$('#email').val("");
-			$('#phone').val("");
+			// add contact to contacts manager from modal
+			$(document).on('click', '#save' ,function(event){
+
+				insert('mname','memail','mphone');
+				$('#myModal').modal('hide');
+
+			});
+
+			// contacts manager delete buttons
+			$(document).on('click', '.remove' ,function(event){
+
+				var rname = $(this).closest('tr');
+				rname = rname[0]['childNodes'][0]['innerText'];
+				confirm('are you sure you want to remove ' + rname);
+				$(this).closest('tr').remove();
 
 
+			});
 
-		});
+			// contacts manager edit buttons
+			$(document).on('click', '.edit' ,function(event){
 
-		$('button').on('click', function(event) {
+				var trtd = $(this).closest('tr').detach();
+				var name = trtd[0]['childNodes'][0]['innerText'];
+				var email = trtd[0]['childNodes'][1]['innerText'];
+				var phone = trtd[0]['childNodes'][2]['innerText'];
+			
+				$('#mname').val(name);
+				$('#memail').val(email);
+				$('#mphone').val(phone);
 
-			event.preventDefault();
-			console.log('this works');
+			});
 
-			console.log($(this).parents('tr').html(''));
+			// search functions
+			$('#search').on('keydown', function(event){
+				
 
-		});
-		
-			// class for red button class="btn btn-danger"
-			// :contains(text) - to search?
+		        if(event.which == 13){ 
+				   event.preventDefault();
+				}
+				if (event.which == 27) {
+					event.preventDefault();
+					$('#search').val('');
+					$('tr.inrow').show();
+				}
+				
+		        var searchitem = $('#search').val();
+		        console.log(searchitem);
 
+			    if (searchitem == '' || searchitem == null || searchitem == undefined) {
+			        $('tr.introw').show();
+			    }
+			    else {
+			        searchitem = searchitem.toUpperCase();
+			        $('tr.inrow').hide();
+			        $('tr.inrow').each(function() {
+			            if ($(this)['context']['innerText'].toUpperCase().search(searchitem) > -1) {
+			                $(this).show();
+			            }
+			        });
+			    }
+			});
 
 		</script>
 

@@ -20,16 +20,17 @@ class PInput
 	public function setInput() {
 
 		$input = Input::escape(Input::get($this->key));
-		
+
 		if (!empty($input)) {
 			
 			try{
 
+				$this->isSet = true;
+
 				if ($this->isDate) 
 				{	
 					$input = Input::getdate($this->key);
-					// var_dump($input);
-					// $input = $input->date;
+					$input = $input->format('Y-m-d');
 					
 
 				} else if ($this->isNumber) {	
@@ -42,12 +43,44 @@ class PInput
 
 				} 
 
-				$this->isSet = true;
+
+
+			} catch (InvalidArgumentException $e) {
+				
+				$this->isSet = false;
+				$this->exMessage = $e->getMessage();	
+				var_dump('invalarg');
+
+
+			} catch (OutOfRangeException $e) {
+				
+				$this->isSet = false;
+				$this->exMessage = $e->getMessage();	
+				var_dump('outorange');
+
+			} catch (DomainException $e) {
+				
+				$this->isSet = false;
+				$this->exMessage = $e->getMessage();
+				var_dump('domainex');
+
+			} catch (LengthException $e) {
+				
+				$this->isSet = false;
+				$this->exMessage = $e->getMessage();
+				var_dump('length');
+
+			} catch (RangeException $e) {
+				
+				$this->isSet = false;
+				$this->exMessage = $e->getMessage();
+				var_dump('range');
 
 			} catch (Exception $e) {
 				
 				$this->isSet = false;
 				$this->exMessage = $e->getMessage();
+				var_dump('exp');
 			}
 			
 		}
@@ -91,7 +124,7 @@ function pageVariables($connection) {
 	];
 
 	// var_dump($in_date_est);
-	// var_dump($pass);
+	var_dump($pass);
 
 	if ($in_name->isSet&&$in_location->isSet&&$in_date_est->isSet&&$in_area->isSet&&$in_description->isSet) {
 		
@@ -115,7 +148,7 @@ function insertPark($pass, $connection) {
 
 	$stmt->bindValue(':name',$pass['in_name'],PDO::PARAM_STR);
 	$stmt->bindValue(':location',$pass['in_location'],PDO::PARAM_STR);
-	$stmt->bindValue(':date_established',$pass['in_date_est']->format('Y-m-d'),PDO::PARAM_STR);
+	$stmt->bindValue(':date_established',$pass['in_date_est'],PDO::PARAM_STR);
 	$stmt->bindValue(':area_in_acres',$pass['in_area'],PDO::PARAM_STR);
 	$stmt->bindValue(':description',$pass['in_description'],PDO::PARAM_STR);
 

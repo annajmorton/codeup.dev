@@ -26,11 +26,10 @@ if ($edit_parkdb) {
 	$add_park = '';
 }
 
-// $exception_show = "class='hidden'";
-// if (is_null($exMessage)==false) {
+if (is_null($exMessage)==false) {
 
-// 	$exception_show = '';	
-// }
+	$exception_show = '';	
+}
 
 
 ?>
@@ -61,7 +60,7 @@ if ($edit_parkdb) {
 			<div id="hat" class="flex"><img src="HH_Park_ranger_hat.png" alt="ranger hat"></div>
 
 			
-			<!-- <div <?= $exception_show; ?>> -->
+			<div <?= $exception_show; ?>
 				<div class="flex">
 
 					<?php foreach ($exMessage as $key => $exception): ?>
@@ -73,7 +72,7 @@ if ($edit_parkdb) {
 					<?php endforeach; ?>
 
 				</div>
-			<!-- </div> -->
+			</div>
 
 
 

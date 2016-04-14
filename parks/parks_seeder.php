@@ -6,8 +6,7 @@ require_once '../parks/parks_reader.php';
 
 // delete anything in the table
 
-$query = 'TRUNCATE national_parks;';
-$connection->exec($query);
+Ad::truncate();
 
 $stmt = $connection->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
 
